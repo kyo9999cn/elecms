@@ -1,4 +1,4 @@
-const BasicLayout = () => import('@/layout/BasicLayout.vue')
+import { BasicLayout } from '@/layout'
 
 export default [
   {

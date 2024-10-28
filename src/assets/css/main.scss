@@ -1,0 +1,197 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li,
+p {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ele-body {
+    height: 100vh;
+}
+
+.ele-menu {
+    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.ele-footer {
+    height: 50px;
+    text-align: center;
+    color: var(--el-text-color-secondary);
+    font-size: 13px;
+    font-weight: lighter;
+    margin-top: 30px;
+}
+
+.ele-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: rgba($color: #ffffff, $alpha: 0.9);
+}
+
+.ele-logo img {
+    width: 32px;
+}
+
+.ele-logo h2 {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px 20px 0px 10px;
+    white-space: nowrap;
+
+    transition: all 0.3s;
+}
+
+.ele-aside .el-footer {
+    color: rgba($color: #ffffff, $alpha: 0.9);
+    border-top: 1px solid rgba($color: #ffffff, $alpha: 0.1);
+}
+
+.ele-body .el-footer {
+    font-size: 13px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ele-tabbar {
+    background: #f2f3f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+}
+
+.ele-tabbar .el-tabs--card {}
+
+.ele-tabbar .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    background: #ffffff;
+}
+
+.ele-tabbar .ele-tabbar-main {
+    width: calc(100% - 26px);
+}
+
+.ele-tabbar .ele-tabbar-action {
+    width: 26px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--el-text-color-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    border-bottom: 1px solid var(--el-border-color-light);
+}
+
+.ele-tabbar .ele-tabbar-action .el-icon {
+    padding: 2px;
+    outline: none;
+}
+
+.ele-main__content {
+    overflow: hidden;
+}
+.ele-main-body {
+    height: calc(100% - 40px);
+    overflow: auto;
+}
+.ele-main-body .ele-main-body__content {
+    padding: 10px 20px 20px 20px;
+}
+
+.ele-form .el-divider__text {
+    font-size: 13px;
+}
+.ele-form .el-divider--horizontal {
+    margin: 32px 0px;
+}
+
+// 面包屑
+.ele-breadcrumb {
+    padding: 15px 0px 5px 0px;
+}
+
+// 表格样式
+.ele-search-box .el-button, .ele-actions-box .el-button {
+    height: 30px;
+    padding-top: 10px;
+}
+.ele-table-box .el-table {
+    --el-table-border-color: var(--el-border-color);
+    --el-table-border: 1px solid var(--el-border-color);
+    --el-table-header-text-color: #303133;
+    font-size: 13.5px;
+}
+.ele-table-box .el-table th.el-table__cell {
+    --el-table-header-bg-color: #f3f4f5;
+    font-weight: 600;
+}
+/* .ele-table-box .el-table td.el-table__cell {
+} */
+.el-table__inner-wrapper::before {
+    height: 1px;
+}
+.el-table--border .el-table__inner-wrapper::after {
+    height: 0.5px;
+}
+.ele-table-box .el-table .el-scrollbar__bar.is-vertical {
+    display: none;
+}
+
+// 上传图片组件样式
+.image-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--el-transition-duration-fast);
+}
+
+.image-uploader img.image {
+    display: block;
+    width: 120px;
+    height: 120px;
+}
+
+.image-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.image-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    text-align: center;
+}
+
+
+
+// 文本
+.text-gray {
+    color: gray;
+}
+.text-green {
+    color: green;
+}
+.text-red {
+    color: red;
+}

@@ -11,7 +11,7 @@ export const useUserStore = defineStore({
   actions: {
     // 登录
     async login(username: string, password: string) {
-      const { data } = await login(username, password)
+      const { data } = await login({ username, password })
       if (data) {
         return Promise.resolve(data)
       }

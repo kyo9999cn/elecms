@@ -1,14 +1,14 @@
 export default [
   {
     label: '工作台',
-    name: 'Dashbord',
-    icon: 'odometer',
-    path: '/'
+    name: 'Dashboard',
+    icon: 'speed-up',
+    path: '/dashboard'
   },
   {
     label: '系统设置',
     name: 'System',
-    icon: 'System',
+    icon: 'settings',
     path: '/system',
     children: [
       {

@@ -1,0 +1,152 @@
+:root {
+    --el-header-padding: 0px;
+    --el-color-primary: #1677ff;
+    --el-font-size-base: 13.5px;
+}
+.el-header {
+    --el-header-padding: 0px;
+    --el-header-height: 50px;
+    --el-menu-horizontal-height: 50px;
+}
+.el-main {
+    --el-main-padding: 0px;
+}
+.el-footer {
+    --el-footer-height: 50px;
+}
+.el-header .el-menu--horizontal {
+    --el-menu-hover-bg-color: none;
+}
+.el-header .el-menu--horizontal > .el-menu-item:nth-child(1) {
+    margin-right: auto;
+}
+.el-header .el-menu--horizontal i {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.el-header .el-menu--horizontal .el-menu-item:hover,
+.el-header .el-menu--horizontal .el-menu-item:active,
+.el-header .el-menu--horizontal .el-menu-item:focus,
+.el-header .el-menu--horizontal .el-menu-item.is-active {
+    color: var(--el-menu-text-color);
+}
+.el-aside {
+    --el-menu-bg-color: #001529;
+    --el-menu-text-color: rgba(255, 255, 255, 0.6);
+    --el-menu-active-color: rgba(255, 255, 255, 0.9);
+    --el-menu-hover-bg-color: none;
+    --el-menu-hover-text-color: rgba(255, 255, 255, 0.9);
+    --el-menu-item-height: 40px;
+    --el-menu-sub-item-height: var(--el-menu-item-height);
+    --el-menu-base-level-padding: 12px;
+
+    background: #001529;
+    height: 100%;
+    overflow: hidden;
+
+    // 增加动画效果防止折叠卡顿
+    transition: width 0.3s;
+}
+.el-aside .el-container,
+.el-aside .el-header,
+.el-aside .el-main,
+.el-aside .el-footer {
+    overflow: hidden;
+}
+.el-aside .el-menu {
+    border-right: none;
+}
+.el-aside .el-menu .el-menu-item,
+.el-aside .el-menu .el-sub-menu__title {
+    margin: 4px 8px 4px 8px;
+    border-radius: 5px;
+}
+/* .el-aside .el-menu.el-menu--collapse .el-icon {
+    font-size: 20px;
+} */
+.el-aside .el-menu.el-menu--collapse .el-menu-item,
+.el-aside .el-menu.el-menu--collapse .el-sub-menu__title {
+    margin: 4px 8px 4px 8px;
+    transition: all 0.5s;
+}
+.el-aside .el-menu .el-menu-item:active {
+    background-color: rgba(#1677ff, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+.el-aside .el-menu.el-menu--collapse {
+    width: auto;
+}
+.el-aside .el-menu.el-sub-menu.is-active .el-sub-menu__title,
+.el-aside .el-menu .el-menu-item.is-active {
+    background-color: var(--el-color-primary);
+    color: rgba(255, 255, 255, 0.9);
+}
+.el-aside .el-menu.el-menu--collapse .el-sub-menu.is-active .el-sub-menu__title,
+.el-aside .el-menu.el-menu--collapse .el-menu-item.is-active {
+    background-color: var(--el-color-primary);
+    color: rgba(255, 255, 255, 0.9);
+}
+.el-aside .el-menu>.el-sub-menu .el-menu {
+    --el-menu-base-level-padding: 36px;
+    --el-menu-level-padding: 16px;
+
+    background-color: #000c17;
+    padding: 2px 0px;
+}
+.el-aside .el-sub-menu .el-sub-menu__icon-arrow {
+    right: 20px;
+}
+
+
+.el-tabs--card>.el-tabs__header .el-tabs__nav {
+    border-radius: 0;
+}
+.el-tabs__header {
+    margin: 0px;
+}
+
+.el-input, .el-textarea {
+    --el-input-border-radius: 2px;
+}
+
+.el-button--small {
+    padding: 3px 8px;
+}
+
+// 面包屑设置
+.el-breadcrumb {
+    font-size: 13.5px;
+}
+
+// 分页设置
+.el-pagination {
+    --el-pagination-button-width: 28px;
+    --el-pagination-button-height: 28px;
+    --el-pagination-font-size: 13.5px;
+}
+.el-pagination .el-select {
+    width: 60px;
+}
+.el-pagination .el-select__wrapper {
+    min-height: 28px;
+}
+.el-pagination .el-input__inner {
+    --el-input-inner-height: 26px;
+}
+.el-pager li.is-active {
+    font-weight: normal;
+}
+
+// 滚动条样式
+.el-aside::-webkit-scrollbar {
+    display: none;
+}
+.el-aside .el-container::-webkit-scrollbar {
+    display: none;
+}
+.el-aside .el-menu::-webkit-scrollbar {
+    display: none;
+}
+.el-footer::-webkit-scrollbar {
+    display: none;
+}
