@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TablePage } from '@/layout'
 
-const model = 'develop/settings'
+const model = 'develop/entry'
 </script>
 
 <template>

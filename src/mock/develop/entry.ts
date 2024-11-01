@@ -1,6 +1,6 @@
 export default [
   {
-    url: '/api/develop/settings/model',
+    url: '/api/develop/entry/model',
     method: 'get',
     response: () => {
       return {
@@ -41,6 +41,14 @@ export default [
               event: 'delete',
               btn: '删除'
             }
+          ],
+          search_fields: [
+            {
+              name: 'name',
+              label: '设置项',
+              type: 'input',
+              placeholder: '设置项'
+            }
           ]
         },
         redirect: '',
@@ -50,7 +58,7 @@ export default [
     }
   },
   {
-    url: '/api/develop/settings',
+    url: '/api/develop/entry',
     method: 'get',
     response: () => {
       return {

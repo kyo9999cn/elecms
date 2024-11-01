@@ -35,6 +35,14 @@ export default [
               event: 'delete',
               btn: '删除'
             }
+          ],
+          search_fields: [
+            {
+              name: 'name',
+              label: '模型名称',
+              type: 'input',
+              placeholder: '模型名称'
+            }
           ]
         },
         redirect: '',

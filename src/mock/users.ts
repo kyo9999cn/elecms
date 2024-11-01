@@ -7,14 +7,8 @@ export default [
         code: 200,
         message: 'success',
         data: {
-          name: 'roles',
+          name: 'users',
           columns: [
-            {
-              key: 'id',
-              dataKey: 'id',
-              title: 'ID',
-              width: 50
-            },
             {
               key: 'username',
               dataKey: 'username',
@@ -84,6 +78,31 @@ export default [
               event: 'delete',
               btn: '删除'
             }
+          ],
+          search_fields: [
+            {
+              name: 'username',
+              label: '用户名',
+              type: 'input',
+              placeholder: '用户名'
+            },
+            {
+              name: 'role_id',
+              label: '角色名称',
+              type: 'select',
+              options: [],
+              async: 1,
+              url: 'roles',
+              valueKey: 'id',
+              labelKey: 'name',
+              placeholder: '角色名称'
+            },
+            {
+              name: 'mobile',
+              label: '联系电话',
+              type: 'input',
+              placeholder: '联系电话'
+            }
           ]
         },
         redirect: '',
@@ -109,6 +128,7 @@ export default [
               memo: '系统管理员'
             },
             truename: '小白fate',
+            avatar: '/avatar.jpg',
             mobile: '-',
             email: '',
             memo: '-',
@@ -125,6 +145,7 @@ export default [
               memo: '普通管理员'
             },
             truename: 'test',
+            avatar: '',
             mobile: '-',
             email: '',
             memo: '-',

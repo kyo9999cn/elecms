@@ -58,7 +58,7 @@ export default [
               app_short_name: '',
               app_logo: '',
               app_description: '',
-              is_log: true
+              is_log: 0
             }
           },
           {

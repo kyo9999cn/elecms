@@ -22,6 +22,56 @@ p {
     overflow-y: auto;
 }
 
+.ele-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 49.5px;
+    border-bottom: 1px solid var(--el-menu-border-color);
+}
+
+.ele-header .ele-header-left {
+    display: flex;
+    align-items: center;
+    height: var(--el-header-height);
+}
+
+.ele-header .el-icon {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.ele-header .ele-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.ele-header .ele-header-right .ele-userbox {
+    display: flex;
+    align-items: center;
+    height: var(--el-header-height);
+    color: var(--el-text-color-primary);
+    outline: none;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.ele-header .ele-header-right .ele-userbox b {
+    font-size: 14px;
+}
+
+.ele-header .ele-header-actions {
+    display: flex;
+}
+
+.ele-header .ele-header-actions .action-item {
+    padding: 0px 10px;
+    height: var(--el-header-height);
+    display: flex;
+    align-items: center;
+}
+
 .ele-footer {
     height: 50px;
     text-align: center;
@@ -52,9 +102,16 @@ p {
     transition: all 0.3s;
 }
 
+// 侧边栏底部样式
 .ele-aside .el-footer {
-    color: rgba($color: #ffffff, $alpha: 0.9);
+    color: rgba($color: #ffffff, $alpha: 0.6);
     border-top: 1px solid rgba($color: #ffffff, $alpha: 0.1);
+}
+.ele-aside .el-footer .el-icon {
+    font-size: 18px;
+}
+.ele-aside .el-footer .ele-footer-btn {
+    cursor: pointer;
 }
 
 .ele-body .el-footer {
@@ -65,6 +122,7 @@ p {
     align-items: center;
 }
 
+
 .ele-tabbar {
     background: #f2f3f4;
     display: flex;
@@ -74,8 +132,6 @@ p {
     height: 40px;
     overflow: hidden;
 }
-
-.ele-tabbar .el-tabs--card {}
 
 .ele-tabbar .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
     background: #ffffff;
@@ -105,19 +161,56 @@ p {
 .ele-main__content {
     overflow: hidden;
 }
+
 .ele-main-body {
     height: calc(100% - 40px);
     overflow: auto;
 }
+
 .ele-main-body .ele-main-body__content {
     padding: 10px 20px 20px 20px;
 }
 
+// 搜索器样式
+.ele-search-box {
+    margin-top: 20px;
+    border-radius: 2px;
+    border: 1px solid var(--el-border-color);
+    background: #f3f4f5;
+    padding: 12px;
+}
+
+.ele-search-box .el-form-item {
+    --el-form-label-font-size: 13.5px;
+    margin-bottom: 5px;
+}
+
+.ele-search-box .el-form-item .content .warper {
+    width: 100%;
+}
+
+.ele-search-box .el-button,
+.ele-actions-box .el-button {
+    height: 30px;
+    padding-top: 10px;
+}
+
+.ele-form-box {
+    padding-top: 20px;
+}
 .ele-form .el-divider__text {
     font-size: 13px;
 }
+
 .ele-form .el-divider--horizontal {
     margin: 32px 0px;
+}
+
+.ele-drop {
+    min-width: 110px;
+}
+.ele-drop-hd {
+    color: var(--el-text-color-primary);
 }
 
 // 面包屑
@@ -126,30 +219,34 @@ p {
 }
 
 // 表格样式
-.ele-search-box .el-button, .ele-actions-box .el-button {
-    height: 30px;
-    padding-top: 10px;
-}
 .ele-table-box .el-table {
     --el-table-border-color: var(--el-border-color);
     --el-table-border: 1px solid var(--el-border-color);
     --el-table-header-text-color: #303133;
     font-size: 13.5px;
 }
+
 .ele-table-box .el-table th.el-table__cell {
     --el-table-header-bg-color: #f3f4f5;
     font-weight: 600;
 }
+
 /* .ele-table-box .el-table td.el-table__cell {
 } */
 .el-table__inner-wrapper::before {
     height: 1px;
 }
+
 .el-table--border .el-table__inner-wrapper::after {
     height: 0.5px;
 }
+
 .ele-table-box .el-table .el-scrollbar__bar.is-vertical {
     display: none;
+}
+
+.el-dialog .ele-table-box .el-table .el-scrollbar__bar.is-vertical {
+    display: block;
 }
 
 // 上传图片组件样式
@@ -183,15 +280,22 @@ p {
     text-align: center;
 }
 
+// 进度条
+#nprogress .bar {
+    background: #1677ff !important;
+}
+
 
 
 // 文本
 .text-gray {
     color: gray;
 }
+
 .text-green {
     color: green;
 }
+
 .text-red {
     color: red;
 }

@@ -1,7 +1,7 @@
-import request from '@/utils/request'
+import http from '@/utils/http'
 
 export const login = (loginData: any) => {
-  return request({
+  return http.request({
     url: 'auth/login',
     method: 'post',
     data: loginData
@@ -9,7 +9,7 @@ export const login = (loginData: any) => {
 }
 
 export const getUserInfo = () => {
-  return request({
+  return http.request({
     url: 'auth/userinfo'
   })
 }

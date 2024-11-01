@@ -1,68 +1,80 @@
 export default [
   {
-    label: '工作台',
+    label: 'menu.dashboard',
     name: 'Dashboard',
+    title: '工作台',
     icon: 'speed-up',
     path: '/dashboard'
   },
   {
-    label: '系统设置',
+    label: 'menu.system.main',
     name: 'System',
+    title: '系统设置',
     icon: 'settings',
     path: '/system',
     children: [
       {
-        label: '基本设置',
+        label: 'menu.system.settings',
         name: 'Settings',
+        title: '基本设置',
         path: '/system/settings'
       },
       {
-        label: '权限管理',
+        label: 'menu.system.permiss.main',
         name: 'Permiss',
+        title: '权限设置',
         path: '/system/permiss',
         children: [
           {
-            label: '角色管理',
+            label: 'menu.system.permiss.roles',
             name: 'PermissRoles',
+            title: '角色管理',
             path: '/system/permiss/roles'
           },
           {
-            label: '权限规则',
+            label: 'menu.system.permiss.rules',
             name: 'PermissRules',
+            title: '权限规则',
             path: '/system/permiss/rules'
           }
         ]
       },
       {
-        label: '用户管理',
+        label: 'menu.system.users',
         name: 'SystemUsers',
+        title: '用户管理',
         path: '/system/users'
       },
       {
-        label: '系统开发',
+        label: 'menu.system.develop.main',
         name: 'Develop',
+        title: '系统开发',
         path: '/system/develop',
         children: [
           {
-            label: '设置项',
-            name: 'DevelopSettings',
-            path: '/system/develop/settings'
+            label: 'menu.system.develop.entry',
+            name: 'DevelopEntry',
+            title: '设置项',
+            path: '/system/develop/entry'
           },
           {
-            label: '模型管理',
+            label: 'menu.system.develop.models',
             name: 'DevelopModels',
+            title: '模型管理',
             path: '/system/develop/models'
           },
           {
-            label: '系统菜单',
+            label: 'menu.system.develop.menus',
             name: 'DevelopMenus',
+            title: '系统菜单',
             path: '/system/develop/menus'
           }
         ]
       },
       {
-        label: '系统日志',
+        label: 'menu.system.logs',
         name: 'SystemLogs',
+        title: '系统日志',
         path: '/system/logs'
       }
     ]

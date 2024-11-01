@@ -10,12 +10,6 @@ export default [
           name: 'roles',
           columns: [
             {
-              key: 'id',
-              dataKey: 'id',
-              title: 'ID',
-              width: 60
-            },
-            {
               key: 'name',
               dataKey: 'name',
               title: '角色名称',
@@ -25,9 +19,16 @@ export default [
               key: 'memo',
               dataKey: 'memo',
               title: '备注'
+            },
+            {
+              key: 'status',
+              dataKey: 'status',
+              title: '状态',
+              type: 'switch',
+              fixed: 'right'
             }
           ],
-          actions_width: 160,
+          actions_width: 200,
           actions: [
             {
               key: 'edit',
@@ -36,10 +37,43 @@ export default [
               btn: '修改'
             },
             {
+              key: 'set',
+              type: 'default',
+              event: 'set',
+              btn: '权限设置'
+            },
+            {
               key: 'delete',
               type: 'danger',
               event: 'delete',
               btn: '删除'
+            }
+          ],
+          search_fields: [
+            {
+              name: 'name',
+              label: '角色名称',
+              type: 'input',
+              placeholder: '角色名称'
+            }
+          ],
+          fields: [
+            {
+              name: 'name',
+              label: '角色名称',
+              type: 'input',
+              placeholder: '角色名称'
+            },
+            {
+              name: 'memo',
+              label: '备注',
+              type: 'textarea',
+              placeholder: '备注'
+            },
+            {
+              name: 'status',
+              label: '状态',
+              type: 'switch'
             }
           ]
         },
@@ -60,12 +94,14 @@ export default [
           {
             id: '1',
             name: '系统管理员',
-            memo: '系统管理员'
+            memo: '系统管理员',
+            status: 1
           },
           {
             id: '2',
             name: '普通管理员',
-            memo: '普通管理员'
+            memo: '普通管理员',
+            status: 1
           }
         ],
         total: 1,

@@ -1,28 +1,35 @@
 import { defineStore } from 'pinia'
+import settings from '@/settings'
 
 export const useAppStore = defineStore({
   id: 'app',
   state: () => ({
-    lang: '',
-    actived: '/home',
+    lang: settings.defaultLang ?? 'zhCn',
+    tabMenus: [
+      {
+        label: settings.indexLabel,
+        title: settings.indexName,
+        path: settings.indexPath
+      }
+    ],
+    currentMenu: settings.indexPath,
+    openedMenu: [],
     collapse: false
   }),
-  actions: {
-    onChangeActiveMenu(path: string) {
-      this.actived = path
-    },
-    onToggleMenu() {
-      this.collapse = !this.collapse
-    },
-    onChangeLang(lang: string) {
-      this.lang = lang
-    }
-  },
+  actions: {},
   persist: {
     enabled: true,
     strategies: [
       {
-        key: 'actived',
+        key: 'tabMenus',
+        storage: localStorage
+      },
+      {
+        key: 'currentMenu',
+        storage: localStorage
+      },
+      {
+        key: 'openedMenu',
         storage: localStorage
       },
       {

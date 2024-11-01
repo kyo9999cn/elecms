@@ -43,6 +43,14 @@ export default [
               event: 'delete',
               btn: '删除'
             }
+          ],
+          search_fields: [
+            {
+              name: 'name',
+              label: '菜单名称',
+              type: 'input',
+              placeholder: '菜单名称'
+            }
           ]
         },
         redirect: '',

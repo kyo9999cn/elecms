@@ -62,6 +62,14 @@ export default [
               customRander: true
             },
             {
+              key: 'is_mult_delete',
+              dataKey: 'is_mult_delete',
+              title: '批量删除',
+              width: 80,
+              align: 'center',
+              customRander: true
+            },
+            {
               key: 'is_export',
               dataKey: 'is_export',
               title: '导出',
@@ -111,6 +119,14 @@ export default [
               type: 'danger',
               event: 'delete',
               btn: '删除'
+            }
+          ],
+          search_fields: [
+            {
+              name: 'name',
+              label: '权限名称',
+              type: 'input',
+              placeholder: '权限名称'
             }
           ]
         },
@@ -245,6 +261,165 @@ export default [
                         is_add: 1,
                         is_edit: 1,
                         is_delete: 1
+                      }
+                    ]
+                  },
+                  {
+                    id: '10',
+                    name: '系统菜单',
+                    alias: 'system::develop::menus',
+                    memo: '系统菜单',
+                    is_search: 1,
+                    is_add: 1,
+                    is_edit: 1,
+                    is_delete: 1
+                  }
+                ]
+              },
+              {
+                id: '11',
+                name: '系统日志',
+                alias: 'system::logs',
+                memo: '系统日志',
+                is_search: 1,
+                is_delete: 1
+              }
+            ]
+          }
+        ],
+        total: 1,
+        redirect: '',
+        wait: 3,
+        status: 'success'
+      }
+    }
+  },
+  {
+    url: '/api/rules/data',
+    method: 'get',
+    response: () => {
+      return {
+        code: 200,
+        message: 'success',
+        data: [
+          {
+            id: '1',
+            name: '工作台',
+            alias: 'dashboard',
+            memo: '工作台',
+            checked: 1
+          },
+          {
+            id: '2',
+            name: '系统设置',
+            alias: 'system',
+            memo: '系统设置',
+            checked: 1,
+            children: [
+              {
+                id: '3',
+                name: '基本设置',
+                alias: 'system::settings',
+                memo: '基本设置',
+                checked: 1,
+                children: [
+                  {
+                    id: '12',
+                    name: '基本设置',
+                    alias: 'system::settings::base',
+                    memo: '基本设置',
+                    checked: 1
+                  },
+                  {
+                    id: '13',
+                    name: '网站设置',
+                    alias: 'system::settings::site',
+                    memo: '网站设置',
+                    checked: 1
+                  }
+                ]
+              },
+              {
+                id: '4',
+                name: '权限管理',
+                alias: 'system::permiss',
+                memo: '权限管理',
+                checked: 1,
+                children: [
+                  {
+                    id: '5',
+                    name: '角色管理',
+                    alias: 'system::permiss::roles',
+                    memo: '角色管理',
+                    checked: 1,
+                    is_search: 1,
+                    is_add: 1,
+                    is_edit: 1,
+                    is_delete: 1,
+                    custom_actions: [
+                      {
+                        label: '权限设置',
+                        value: 'set'
+                      }
+                    ]
+                  },
+                  {
+                    id: '6',
+                    name: '权限规则',
+                    alias: 'system::permiss::rules',
+                    memo: '权限规则',
+                    is_search: 1,
+                    is_add: 1,
+                    is_edit: 1,
+                    is_delete: 1
+                  }
+                ]
+              },
+              {
+                id: '7',
+                name: '用户管理',
+                alias: 'system::users',
+                memo: '用户管理',
+                is_search: 1,
+                is_add: 1,
+                is_edit: 1,
+                is_delete: 1
+              },
+              {
+                id: '8',
+                name: '系统开发',
+                alias: 'system::develop',
+                memo: '系统开发',
+                children: [
+                  {
+                    id: '9',
+                    name: '设置项',
+                    alias: 'system::develop::settings',
+                    memo: '设置项',
+                    is_search: 1,
+                    is_add: 1,
+                    is_edit: 1,
+                    is_delete: 1,
+                    custom_actions: [
+                      {
+                        label: '设置字段',
+                        value: 'fields'
+                      }
+                    ]
+                  },
+                  {
+                    id: '10',
+                    name: '模型管理',
+                    alias: 'system::develop::models',
+                    memo: '模型管理',
+                    is_search: 1,
+                    is_add: 1,
+                    is_edit: 1,
+                    is_delete: 1,
+                    custom_actions: [
+                      {
+                        label: '模型字段',
+                        value: 'fields'
                       }
                     ]
                   },

@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import request from '@/utils/request'
+import http from '@/utils/http'
 import { EleForm } from '@/components'
 
 const settingData: any = ref([])
 
 // 获取配置项Tabs设置数组及字段默认值
 const onGetSetting = () => {
-  request({
-    url: 'settings'
-  }).then((res: any) => {
-    settingData.value = res.data
-  })
+  http
+    .request({
+      url: 'settings'
+    })
+    .then((res: any) => {
+      settingData.value = res.data
+    })
 }
 onGetSetting()
 </script>
@@ -26,7 +28,11 @@ onGetSetting()
         :index="item.name"
       >
         <div class="ele-tab-body">
-          <ele-form v-model:data="item.data" :fields="item.fields"></ele-form>
+          <ele-form
+            v-model="item.data"
+            :fields="item.fields"
+            submit-btn="保存设置"
+          ></ele-form>
         </div>
       </el-tab-pane>
     </el-tabs>

@@ -7,6 +7,8 @@
     --el-header-padding: 0px;
     --el-header-height: 50px;
     --el-menu-horizontal-height: 50px;
+    z-index: 99;
+    box-shadow: 0px 0px 5px 0px rgba(#000000, 0.1);
 }
 .el-main {
     --el-main-padding: 0px;
@@ -97,6 +99,18 @@
     right: 20px;
 }
 
+.el-menu--popup {
+    --el-menu-item-height: 42px;
+    --el-menu-sub-item-height: 42px;
+}
+
+.el-table--small .el-table__cell {
+    padding: 4px 0px;
+}
+.el-table--border th.el-table__cell {
+    padding: 5px 0px;
+}
+
 
 .el-tabs--card>.el-tabs__header .el-tabs__nav {
     border-radius: 0;
@@ -105,10 +119,18 @@
     margin: 0px;
 }
 
-.el-input, .el-textarea {
+// 表单
+.el-input, .el-textarea, .el-select {
     --el-input-border-radius: 2px;
+    --el-border-radius-base: 2px;
 }
-
+.el-checkbox {
+    --el-checkbox-height: 1.8em;
+}
+.el-checkbox__label {
+    --el-checkbox-font-size: 13.5px;
+    color: var(--el-text-color-primary);
+}
 .el-button--small {
     padding: 3px 8px;
 }
@@ -135,6 +157,28 @@
 }
 .el-pager li.is-active {
     font-weight: normal;
+}
+
+
+// 对话框
+.el-dialog {
+    --el-dialog-title-font-size: 15px;
+}
+.el-dialog__title {
+    font-weight: bold;
+}
+
+// 抽屉
+.el-drawer {
+    --el-drawer-padding-primary: 15px;
+}
+.el-drawer .el-drawer__title {
+    font-size: 15px;
+    color: var(--el-text-color-primary);
+    font-weight: bold;
+}
+.el-drawer .el-drawer__header {
+    margin-bottom: 20px;
 }
 
 // 滚动条样式

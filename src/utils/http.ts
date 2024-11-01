@@ -3,8 +3,9 @@ import axios from 'axios'
 // import { errorCode } from './error'
 import { useUserStore } from '@/store/modules/user'
 
+const http: any = {}
 // 创建axios实例
-const request = axios.create({
+http.request = axios.create({
   // 服务接口请求
   baseURL: import.meta.env.VITE_APP_BASE_API,
   // 超时设置
@@ -15,7 +16,7 @@ const request = axios.create({
 })
 
 // 请求拦截
-request.interceptors.request.use(
+http.request.interceptors.request.use(
   (config: any) => {
     const { token } = useUserStore()
     // 是否需要设置 token
@@ -30,7 +31,7 @@ request.interceptors.request.use(
 )
 
 // 响应拦截器
-request.interceptors.response.use(
+http.request.interceptors.response.use(
   (res: any) => {
     // 未设置状态码则默认成功状态
     const code = res.data.code || 200
@@ -62,4 +63,4 @@ request.interceptors.response.use(
   }
 )
 
-export default request
+export default http

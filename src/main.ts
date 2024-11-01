@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import pinia from './store'
 import router from './router'
@@ -11,13 +10,7 @@ import 'remixicon/fonts/remixicon.css'
 import './assets/css/style.scss'
 
 const app = createApp(App)
-app
-  .use(ElementPlus, {
-    locale: zhCn
-  })
-  .use(router)
-  .use(pinia)
-  .mount('#app')
+app.use(ElementPlus).use(router).use(pinia).mount('#app')
 
 // 注册组件
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

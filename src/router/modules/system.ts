@@ -6,6 +6,7 @@ export default [
     component: BasicLayout,
     name: 'System',
     meta: {
+      label: 'menu.system.main',
       title: '系统设置',
       icon: 'settings'
     },
@@ -15,6 +16,7 @@ export default [
         name: 'Settings',
         component: () => import('@/views/system/settings.vue'),
         meta: {
+          label: 'menu.system.settings',
           title: '基本设置'
         }
       },
@@ -22,7 +24,8 @@ export default [
         path: 'permiss',
         name: 'Permiss',
         meta: {
-          title: '角色权限'
+          label: 'menu.system.permiss.main',
+          title: '权限管理'
         },
         children: [
           {
@@ -30,6 +33,7 @@ export default [
             name: 'PermissRoles',
             component: () => import('@/views/system/permiss/roles.vue'),
             meta: {
+              label: 'menu.system.permiss.roles',
               title: '角色管理'
             }
           },
@@ -38,6 +42,7 @@ export default [
             name: 'PermissRules',
             component: () => import('@/views/system/permiss/rules.vue'),
             meta: {
+              label: 'menu.system.permiss.rules',
               title: '权限规则'
             }
           }
@@ -48,6 +53,7 @@ export default [
         name: 'SystemUsers',
         component: () => import('@/views/system/users.vue'),
         meta: {
+          label: 'menu.system.users',
           title: '用户管理'
         }
       },
@@ -55,15 +61,17 @@ export default [
         path: 'develop',
         name: 'Develop',
         meta: {
+          label: 'menu.system.develop.main',
           title: '系统开发'
         },
         children: [
           {
-            path: 'settings',
-            name: 'DevelopSettings',
-            component: () => import('@/views/system/develop/settings.vue'),
+            path: 'entry',
+            name: 'DevelopEntry',
+            component: () => import('@/views/system/develop/entry.vue'),
             meta: {
-              title: '配置项'
+              label: 'menu.system.develop.entry',
+              title: '设置项'
             }
           },
           {
@@ -71,6 +79,7 @@ export default [
             name: 'DevelopModels',
             component: () => import('@/views/system/develop/models.vue'),
             meta: {
+              label: 'menu.system.develop.models',
               title: '模型管理'
             }
           },
@@ -79,6 +88,7 @@ export default [
             name: 'DevelopMenus',
             component: () => import('@/views/system/develop/menus.vue'),
             meta: {
+              label: 'menu.system.develop.menus',
               title: '系统菜单'
             }
           }
@@ -89,6 +99,7 @@ export default [
         name: 'SystemLogs',
         component: () => import('@/views/system/logs.vue'),
         meta: {
+          label: 'menu.system.logs',
           title: '系统日志'
         }
       }
