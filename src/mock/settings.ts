@@ -9,47 +9,52 @@ export default [
         data: [
           {
             id: 1,
-            name: 'base',
-            label: '基本设置',
+            name: 'basic',
+            label: 'menu.system.settings.main',
+            title: '基本设置',
             description: '基本设置',
             fields: [
               {
                 id: 1,
                 name: 'app_name',
-                label: '应用名称',
+                label: 'settings.basic.appName',
+                title: '应用名称',
                 type: 'input',
                 width: '70%',
-                placeholder: '应用名称',
-                tips: '这里是应用名称'
+                placeholder: 'settings.basic.appName',
+                tips: 'tipExample'
               },
               {
                 id: 2,
                 name: 'app_short_name',
-                label: '应用简称',
+                label: 'settings.basic.appShortName',
+                title: '应用简称',
                 type: 'input',
                 width: '70%',
-                placeholder: '应用简称'
+                placeholder: 'settings.basic.appShortName'
               },
               {
                 id: 3,
                 name: 'app_logo',
-                label: '应用图标',
+                label: 'settings.basic.appLogo',
+                title: '应用图标',
                 type: 'upload-image',
-                width: '70%',
-                placeholder: '应用图标'
+                width: '70%'
               },
               {
                 id: 4,
                 name: 'app_description',
-                label: '应用描述',
+                label: 'settings.basic.description',
+                title: '应用描述',
                 type: 'textarea',
                 width: '70%',
-                placeholder: '应用描述'
+                placeholder: 'settings.basic.description'
               },
               {
                 id: 5,
                 name: 'is_log',
-                label: '开启日志',
+                label: 'settings.basic.logEnable',
+                title: '开启日志',
                 type: 'switch'
               }
             ],
@@ -63,70 +68,77 @@ export default [
           },
           {
             id: 2,
-            name: 'site',
-            label: '网站设置',
+            name: 'website',
+            label: 'menu.system.settings.website',
+            title: '网站设置',
             description: '网站设置',
             fields: [
               {
                 id: 6,
                 name: 'site_name',
-                label: '网站名称',
+                label: 'settings.website.siteName',
+                title: '网站名称',
                 type: 'input',
                 width: '70%',
-                placeholder: '站点名称'
+                placeholder: 'settings.website.siteName'
               },
               {
                 id: 7,
                 name: 'is_site_off',
-                label: '关闭网站',
+                label: 'settings.website.siteShutdown',
+                title: '关闭网站',
                 type: 'switch'
               },
               {
                 id: 8,
                 name: 'site_off_description',
-                label: '网站关闭描述',
+                label: 'settings.website.shutdownReason',
+                title: '网站关闭原因',
                 type: 'textarea',
                 width: '70%',
                 condition: ['is_site_off', 1],
-                placeholder: '网站关闭描述',
+                placeholder: 'settings.website.shutdownReason',
                 divider: {
-                  label: 'SEO设置',
+                  label: 'settings.website.seoSettings',
+                  title: 'SEO设置',
                   align: 'left'
                 }
               },
               {
                 id: 9,
-                name: 'seo_title',
-                label: '网站SEO标题',
+                name: 'title',
+                label: 'settings.website.title',
+                title: '网站标题',
                 type: 'input',
                 width: '70%',
-                placeholder: '网站SEO标题'
+                placeholder: 'settings.website.title'
               },
               {
                 id: 10,
-                name: 'seo_keywords',
-                label: '网站SEO关键词',
+                name: 'keywords',
+                label: 'settings.website.keywords',
+                title: '网站关键词',
                 type: 'textarea',
                 width: '70%',
-                placeholder: '网站SEO关键词'
+                placeholder: 'settings.website.keywords'
               },
               {
                 id: 11,
-                name: 'seo_description',
-                label: '网站SEO描述',
+                name: 'description',
+                label: 'settings.website.description',
+                title: '网站描述',
                 type: 'textarea',
                 width: '70%',
-                placeholder: '网站SEO描述'
+                placeholder: 'settings.website.description'
               }
             ],
             data: {
               site_name: 'Elecms Pro',
               is_site_off: 0,
               site_off_description: '',
-              seo_title:
-                'Elecms Pro | 基于Vue3+Element UI的企业应用快速开发框架',
-              seo_keywords: '',
-              seo_description: ''
+              title: 'Elecms Pro | 基于Vue3+Element UI的企业应用快速开发框架',
+              keywords: '',
+              description: ''
             }
           }
         ],

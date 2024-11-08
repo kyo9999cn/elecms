@@ -88,7 +88,9 @@ const onCloseMenu = (value: any) => {
             :index="item.path"
           >
             <el-icon><i :class="`ri-${item.icon}-line`"></i></el-icon>
-            <span>{{ getLang(item.label, item.title, appStore.lang) }}</span>
+            <span class="ele-menu-hd">
+              {{ getLang(item.label, item.title, appStore.lang) }}
+            </span>
           </el-menu-item>
           <el-sub-menu
             v-if="item.children && item.children.length !== 0"
@@ -96,7 +98,9 @@ const onCloseMenu = (value: any) => {
           >
             <template #title>
               <el-icon><i :class="`ri-${item.icon}-line`"></i></el-icon>
-              <span>{{ getLang(item.label, item.title, appStore.lang) }}</span>
+              <span class="ele-menu-hd">
+                {{ getLang(item.label, item.title, appStore.lang) }}
+              </span>
             </template>
             <template v-for="vo in item.children" :key="vo.name">
               <el-menu-item
@@ -127,7 +131,7 @@ const onCloseMenu = (value: any) => {
     <el-footer>
       <el-space class="ele-footer-btn">
         <el-icon><i class="ri-logout-box-line"></i></el-icon>
-        <span v-if="!appStore.collapse">
+        <span v-if="!appStore.collapse" class="ele-aside-hd">
           {{ getLang('logout', '退出登录', appStore.lang) }}
         </span>
       </el-space>

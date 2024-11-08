@@ -3,6 +3,8 @@ import type { FormInstance } from 'element-plus'
 import { ref, watch } from 'vue'
 import { UploadImage } from '@/components'
 import http from '@/utils/http'
+import { getLang } from '@/locales'
+import { useAppStore } from '@/store/modules/app'
 
 const props = defineProps({
   modelValue: {
@@ -15,11 +17,11 @@ const props = defineProps({
   },
   labelWidth: {
     type: String,
-    default: 'calc(8em + 24px)'
+    default: '120px'
   },
   labelSuffix: {
     type: String,
-    default: ''
+    default: ':'
   },
   inline: {
     type: Boolean,
@@ -35,7 +37,7 @@ const props = defineProps({
   },
   submitBtn: {
     type: String,
-    default: '提交'
+    default: 'actions.submit'
   },
   resetable: {
     type: Boolean,
@@ -43,7 +45,7 @@ const props = defineProps({
   },
   resetBtn: {
     type: String,
-    default: '重置'
+    default: 'actions.reset'
   },
   cancelable: {
     type: Boolean,
@@ -51,9 +53,11 @@ const props = defineProps({
   },
   cancelBtn: {
     type: String,
-    default: '取消'
+    default: 'actions.cancel'
   }
 })
+
+const appStore = useAppStore()
 
 const formRef = ref<FormInstance>()
 const formData: any = ref(props.modelValue)
@@ -87,6 +91,23 @@ const onBuildOptions = () => {
   })
 }
 onBuildOptions()
+
+// 判断条件
+const onCondition = (condition: any, formData: any) => {
+  if (!condition) {
+    return true
+  }
+  if (typeof condition[1] === 'number' || typeof condition[1] === 'string') {
+    if (formData[condition[0]] === condition[1]) {
+      console.log(1)
+      return true
+    }
+  }
+  if (condition[1] instanceof Array) {
+    console.log(2)
+    return condition[1].includes(formData[condition[0]])
+  }
+}
 
 // 提交表单
 const onSubmit = (formEl: FormInstance | undefined) => {
@@ -130,14 +151,14 @@ watch(
     :label-suffix="props.labelSuffix"
     :inline="props.inline"
     class="ele-form"
+    :autocomplete="false"
+    aria-autocomplete="none"
   >
-    <template v-for="vo in formFields" :key="vo.id">
+    <template v-for="vo in formFields" :key="vo.name">
       <el-form-item
-        v-if="
-          !vo.condition ||
-          (vo.condition && formData[vo.condition[0]] === vo.condition[1])
-        "
-        :label="vo.label"
+        v-if="onCondition(vo.condition, formData)"
+        :label="getLang(vo.label, vo.title ?? vo.label, appStore.lang)"
+        :label-width="vo.labelWidth ?? props.labelWidth"
         :prop="vo.name"
         :rules="vo.rules ?? []"
         :style="{
@@ -153,32 +174,49 @@ watch(
             <el-input
               v-if="vo.type === 'input'"
               v-model="formData[vo.name]"
-              :placeholder="vo.placeholder"
+              :placeholder="
+                getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
+              "
+              clearable
+            />
+            <el-input
+              v-if="vo.type === 'password'"
+              v-model="formData[vo.name]"
+              type="password"
+              :placeholder="
+                getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
+              "
               clearable
             />
             <el-input
               v-if="vo.type === 'textarea'"
               v-model="formData[vo.name]"
-              :placeholder="vo.placeholder"
+              :placeholder="
+                getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
+              "
               type="textarea"
             />
             <el-date-picker
               v-if="vo.type === 'date' || vo.type === 'datetime'"
               v-model="formData[vo.name]"
-              :placeholder="vo.placeholder"
+              :placeholder="
+                getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
+              "
               :type="vo.type === 'datetime' ? 'datetime' : 'date'"
               style="width: 100%"
             />
             <el-select
               v-if="vo.type === 'select'"
               v-model="formData[vo.name]"
-              :placeholder="vo.placeholder"
+              :placeholder="
+                getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
+              "
               clearable
             >
               <el-option
                 v-for="v in formOptions[vo.name]"
                 :key="v.value"
-                :label="v.label"
+                :label="getLang(v.label, v.title ?? v.label, appStore.lang)"
                 :value="v.value"
               />
             </el-select>
@@ -191,7 +229,23 @@ watch(
               v-model="formData[vo.name]"
               :active-value="1"
               :inactive-value="0"
+              size="small"
             />
+            <template
+              v-if="
+                vo.type === 'checkbox' && vo.options && vo.options.length > 0
+              "
+            >
+              <el-space wrap>
+                <el-checkbox
+                  v-for="v in vo.options"
+                  :key="v.name"
+                  v-model="formData[v.name]"
+                  :label="getLang(v.label, v.title ?? v.label, appStore.lang)"
+                  :true-value="1"
+                />
+              </el-space>
+            </template>
           </div>
           <div v-else class="warper">
             {{
@@ -199,14 +253,24 @@ watch(
             }}
           </div>
           <div v-if="vo.tips" class="tips">
-            <el-tooltip :content="vo.tips" placement="right" effect="light">
+            <el-tooltip
+              :content="getLang(vo.tips, vo.tips, appStore.lang)"
+              placement="right"
+              effect="light"
+            >
               <el-icon><i class="ri-question-line"></i></el-icon>
             </el-tooltip>
           </div>
         </div>
       </el-form-item>
       <el-divider v-if="vo.divider" content-position="left">
-        {{ vo.divider.label }}
+        {{
+          getLang(
+            vo.divider.label,
+            vo.divider.title ?? vo.divider.label,
+            appStore.lang
+          )
+        }}
       </el-divider>
     </template>
     <slot name="custom-form" :data="formData" />
@@ -218,13 +282,13 @@ watch(
         type="primary"
         @click="onSubmit(formRef)"
       >
-        {{ props.submitBtn }}
+        {{ getLang(props.submitBtn, '提交', appStore.lang) }}
       </el-button>
       <el-button v-if="props.resetable" @click="onReset(formRef)">
-        {{ props.resetBtn }}
+        {{ getLang(props.resetBtn, '重置', appStore.lang) }}
       </el-button>
       <el-button v-if="props.cancelable" @click="onCancel">
-        {{ props.cancelBtn }}
+        {{ getLang(props.cancelBtn, '提交', appStore.lang) }}
       </el-button>
     </el-form-item>
   </el-form>

@@ -2,7 +2,10 @@
 import { ref } from 'vue'
 import http from '@/utils/http'
 import { EleForm } from '@/components'
+import { getLang } from '@/locales'
+import { useAppStore } from '@/store/modules/app'
 
+const appStore = useAppStore()
 const settingData: any = ref([])
 
 // 获取配置项Tabs设置数组及字段默认值
@@ -24,14 +27,15 @@ onGetSetting()
       <el-tab-pane
         v-for="item in settingData"
         :key="item.id"
-        :label="item.label"
+        :label="getLang(item.label, item.title ?? item.label, appStore.lang)"
         :index="item.name"
       >
         <div class="ele-tab-body">
           <ele-form
             v-model="item.data"
             :fields="item.fields"
-            submit-btn="保存设置"
+            label-width="190px"
+            submit-btn="actions.saveSettings"
           ></ele-form>
         </div>
       </el-tab-pane>

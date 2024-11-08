@@ -177,7 +177,7 @@ p {
     border-radius: 2px;
     border: 1px solid var(--el-border-color);
     background: #f3f4f5;
-    padding: 12px;
+    padding: 12px 20px;
 }
 
 .ele-search-box .el-form-item {
@@ -298,4 +298,19 @@ p {
 
 .text-red {
     color: red;
+}
+
+
+// 多语言样式
+.app__en .el-menu .ele-menu-hd {
+    font-weight: bold;
+}
+.app__en .ele-aside-hd {
+    font-weight: bold;
+}
+.app__en .ele-tabbar-main .el-tabs--card>.el-tabs__header .el-tabs__item {
+    font-weight: bold;
+}
+.app__en .el-table--small .cell {
+    font-size: 13px;
 }

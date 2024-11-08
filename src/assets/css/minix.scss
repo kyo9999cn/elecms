@@ -104,11 +104,16 @@
     --el-menu-sub-item-height: 42px;
 }
 
+// 表格
 .el-table--small .el-table__cell {
     padding: 4px 0px;
 }
 .el-table--border th.el-table__cell {
-    padding: 5px 0px;
+    padding: 6px 0px;
+}
+.ele-table-box .el-table th .cell {
+    overflow-wrap: normal;
+    white-space: nowrap;
 }
 
 
@@ -131,8 +136,18 @@
     --el-checkbox-font-size: 13.5px;
     color: var(--el-text-color-primary);
 }
+.el-form .el-checkbox {
+    --el-checkbox-height: 32px;
+}
 .el-button--small {
     padding: 3px 8px;
+}
+.el-form--inline .el-form-item__label {
+    white-space: nowrap;
+    width: auto !important;
+}
+.el-select__wrapper {
+    font-size: 13.5px;
 }
 
 // 面包屑设置
@@ -166,6 +181,11 @@
 }
 .el-dialog__title {
     font-weight: bold;
+}
+
+// 确认框
+.el-message-box {
+    --el-messagebox-padding-primary: 16px;
 }
 
 // 抽屉

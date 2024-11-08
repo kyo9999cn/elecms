@@ -14,7 +14,7 @@ export default [
     path: '/system',
     children: [
       {
-        label: 'menu.system.settings',
+        label: 'menu.system.settings.main',
         name: 'Settings',
         title: '基本设置',
         path: '/system/settings'

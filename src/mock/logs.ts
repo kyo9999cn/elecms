@@ -13,39 +13,45 @@ export default [
               key: 'type',
               dataKey: 'type',
               title: '操作类型',
-              width: 120
+              label: 'form.logs.type',
+              width: 160
             },
             {
               key: 'user.username',
               dataKey: 'user.username',
+              label: 'form.logs.username',
               title: '用户名',
               width: 160
             },
             {
               key: 'content',
               dataKey: 'content',
+              label: 'form.logs.content',
               title: '操作说明'
             },
             {
               key: 'create_time',
               dataKey: 'create_time',
+              label: 'time.createTime',
               title: '创建时间',
               width: 190
             }
           ],
-          actions_width: 90,
+          actions_width: 160,
           actions: [
             {
               key: 'delete',
               type: 'danger',
               event: 'delete',
-              btn: '删除'
+              title: '删除',
+              label: 'actions.delete'
             }
           ],
           search_fields: [
             {
               name: 'type_id',
-              label: '操作类型',
+              label: 'form.logs.type',
+              title: '操作类型',
               type: 'select',
               options: [
                 {
@@ -57,12 +63,15 @@ export default [
                   value: 2
                 }
               ],
-              placeholder: '操作类型'
+              placeholder: 'form.logs.type'
             },
             {
-              name: 'create_day',
-              label: '创建日期',
-              type: 'date'
+              name: 'create_time',
+              label: 'time.createTime',
+              title: '创建时间',
+              type: 'date',
+              width: '320px',
+              placeholder: 'time.createTime'
             }
           ]
         },

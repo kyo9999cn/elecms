@@ -68,11 +68,31 @@ export default [
           {
             path: 'entry',
             name: 'DevelopEntry',
-            component: () => import('@/views/system/develop/entry.vue'),
             meta: {
               label: 'menu.system.develop.entry',
               title: '设置项'
-            }
+            },
+            children: [
+              {
+                path: '',
+                name: 'DevelopEntryMain',
+                component: () => import('@/views/system/develop/entry.vue'),
+                meta: {
+                  label: 'menu.system.develop.entry',
+                  title: '设置项'
+                }
+              },
+              {
+                path: 'fields/:id',
+                name: 'DevelopEntryFields',
+                meta: {
+                  label: 'menu.system.develop.entryFields',
+                  title: '设置项字段'
+                },
+                component: () =>
+                  import('@/views/system/develop/entryFields.vue')
+              }
+            ]
           },
           {
             path: 'models',

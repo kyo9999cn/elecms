@@ -13,7 +13,7 @@ export default [
               key: 'name',
               dataKey: 'name',
               title: '角色名称',
-              width: 160
+              width: 200
             },
             {
               key: 'memo',
@@ -27,13 +27,15 @@ export default [
               key: 'edit',
               type: 'primary',
               event: 'edit',
-              btn: '修改'
+              label: 'actions.edit',
+              title: '修改'
             },
             {
               key: 'delete',
               type: 'danger',
               event: 'delete',
-              btn: '删除'
+              label: 'actions.delete',
+              title: '删除'
             }
           ],
           search_fields: [
