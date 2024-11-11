@@ -244,7 +244,7 @@ export default [
             status: 1
           }
         ],
-        total: 1,
+        total: 2,
         redirect: '',
         wait: 3,
         status: 'success'

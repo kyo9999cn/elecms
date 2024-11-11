@@ -97,12 +97,7 @@ export default [
                 type: 'textarea',
                 width: '70%',
                 condition: ['is_site_off', 1],
-                placeholder: 'settings.website.shutdownReason',
-                divider: {
-                  label: 'settings.website.seoSettings',
-                  title: 'SEO设置',
-                  align: 'left'
-                }
+                placeholder: 'settings.website.shutdownReason'
               },
               {
                 id: 9,
@@ -111,7 +106,12 @@ export default [
                 title: '网站标题',
                 type: 'input',
                 width: '70%',
-                placeholder: 'settings.website.title'
+                placeholder: 'settings.website.title',
+                divider: {
+                  label: 'settings.website.seoSettings',
+                  title: 'SEO设置',
+                  align: 'left'
+                }
               },
               {
                 id: 10,

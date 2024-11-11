@@ -2,12 +2,12 @@
 import { useRouter } from 'vue-router'
 import { TablePage } from '@/layout'
 
-const model = 'develop/entry'
+const model = 'develop/entries'
 const router = useRouter()
 
 const onCustomAction = (key: any, row: any) => {
   if (key === 'fields') {
-    router.push(`/system/develop/entry/fields/${row.id}`)
+    router.push(`/system/develop/entries/fields/${row.id}`)
   }
 }
 </script>

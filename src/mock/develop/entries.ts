@@ -1,6 +1,6 @@
 export default [
   {
-    url: '/api/develop/entry/model',
+    url: '/api/develop/entries/model',
     method: 'get',
     response: () => {
       return {
@@ -8,14 +8,14 @@ export default [
         message: 'success',
         data: {
           name: 'entry',
-          label: 'form.developEntry.model',
+          label: 'form.developEntries.model',
           title: '设置项',
           columns: [
             {
               key: 'name',
               dataKey: 'name',
               title: '设置项名称',
-              label: 'form.developEntry.name',
+              label: 'form.developEntries.name',
               langKey: 'label',
               width: 200
             },
@@ -23,13 +23,13 @@ export default [
               key: 'memo',
               dataKey: 'memo',
               title: '备注',
-              label: 'form.developEntry.memo'
+              label: 'form.developEntries.memo'
             },
             {
               key: 'status',
               dataKey: 'status',
               title: '状态',
-              label: 'form.developEntry.status',
+              label: 'form.developEntries.status',
               type: 'switch',
               width: 80,
               fixed: 'right'
@@ -63,36 +63,36 @@ export default [
             {
               name: 'name',
               title: '设置项',
-              label: 'form.developEntry.name',
+              label: 'form.developEntries.name',
               type: 'input',
-              placeholder: 'form.developEntry.name'
+              placeholder: 'form.developEntries.name'
             }
           ],
           fields: [
             {
               name: 'name',
-              label: 'form.developEntry.name',
+              label: 'form.developEntries.name',
               title: '设置项名称',
               type: 'input',
-              placeholder: 'form.developEntry.name'
+              placeholder: 'form.developEntries.name'
             },
             {
               name: 'label',
-              label: 'form.developEntry.label',
+              label: 'form.developEntries.label',
               title: '多语言标签',
               type: 'input',
-              placeholder: 'form.developEntry.label'
+              placeholder: 'form.developEntries.label'
             },
             {
               name: 'memo',
-              label: 'form.developEntry.memo',
+              label: 'form.developEntries.memo',
               title: '备注',
               type: 'textarea',
-              placeholder: 'form.developEntry.memo'
+              placeholder: 'form.developEntries.memo'
             },
             {
               name: 'status',
-              label: 'form.developEntry.status',
+              label: 'form.developEntries.status',
               title: '状态',
               type: 'switch'
             }
@@ -105,7 +105,7 @@ export default [
     }
   },
   {
-    url: '/api/develop/entry',
+    url: '/api/develop/entries',
     method: 'get',
     response: () => {
       return {
@@ -127,7 +127,7 @@ export default [
             status: 1
           }
         ],
-        total: 1,
+        total: 2,
         redirect: '',
         wait: 3,
         status: 'success'

@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { TablePage } from '@/layout'
 
-const model = 'develop/entry/fields'
+const model = 'develop/models/fields'
 </script>
 
 <template>
   <table-page
     :model="model"
-    form-label-width="140px"
-    dialog-width="520px"
+    form-label-width="156px"
+    dialog-width="900px"
+    :form-item-col="12"
     back
     sortable
   ></table-page>

@@ -15,13 +15,18 @@ export default {
       users: 'Users',
       develop: {
         main: 'Develop',
-        entry: 'Entry',
+        entries: 'Set Entries',
         entryFields: 'Entry Fields',
         models: 'Models',
+        modelFields: 'Model Fields',
         menus: 'Menus'
       },
       logs: 'Logs'
     }
+  },
+  user: {
+    profile: 'Profile',
+    security: 'Security'
   },
   settings: {
     basic: {
@@ -70,14 +75,14 @@ export default {
       memo: 'Memo',
       status: 'Status'
     },
-    developEntry: {
+    developEntries: {
       model: 'Entry',
       name: 'Entry Name',
       label: 'Language Tag',
       memo: 'Memo',
       status: 'Status'
     },
-    developEntryFields: {
+    developEntriesFields: {
       model: 'Entry Fields',
       name: 'Field Name',
       label: 'Language Tag',
@@ -87,6 +92,45 @@ export default {
       async: 'Async Enable',
       url: 'External URL',
       options: 'Options',
+      memo: 'Memo',
+      status: 'Status'
+    },
+    developModels: {
+      model: 'Model',
+      name: 'Model Name',
+      label: 'Language Tag',
+      memo: 'Memo',
+      languageMethod: 'Language method',
+      async: 'Async Enable',
+      status: 'Status'
+    },
+    developModelsFields: {
+      model: 'Model Fields',
+      name: 'Field Name',
+      label: 'Language Tag',
+      field: 'Bound Field',
+      type: 'Field Type',
+      cols: 'Grid Columns',
+      defaultValue: 'Default Value',
+      numerical: 'Is Numerical',
+      async: 'Async Enable',
+      url: 'External URL',
+      options: 'Options',
+      list: 'List Display',
+      listWidth: 'List Width',
+      listCustom: 'List Custom Render',
+      search: 'Search Enable',
+      edit: 'Edit Enable',
+      memo: 'Memo',
+      status: 'Status'
+    },
+    developMenus: {
+      model: 'Menu',
+      name: 'Menu Name',
+      label: 'Language Tag',
+      icon: 'Icon',
+      parent: 'Parent Menu',
+      path: 'Access Path',
       memo: 'Memo',
       status: 'Status'
     },
@@ -120,7 +164,10 @@ export default {
     saveSettings: 'Save Settings',
     custom: 'Custom Actions',
     permissSet: 'Permission Settings',
-    fieldsSet: 'Fields Settings'
+    fieldsSet: 'Fields Settings',
+    closeOther: 'Close Other',
+    closeAll: 'Close All',
+    refreshPage: 'Refresh Page'
   },
   field: {
     input: 'Text',
@@ -137,6 +184,13 @@ export default {
     switch: 'Switch',
     richtext: 'Rich Text'
   },
+  model: {
+    roles: 'Permission Role',
+    rules: 'Permission Rule',
+    users: 'User',
+    logs: 'Logs',
+    entries: 'Set Entries'
+  },
   message: {
     confirmTitle: 'Confirmation Prompt',
     deleteConfirm: 'Do you really want to delete this record?'
@@ -145,6 +199,10 @@ export default {
     zhCn: 'Simplified Chinese',
     zhTw: 'Traditional Chinese',
     en: 'English'
+  },
+  languageMethod: {
+    tagging: 'Tagging',
+    database: 'Database Storage'
   },
   time: {
     createTime: 'Create Time',
@@ -157,8 +215,10 @@ export default {
   operations: 'Operations',
   loading: 'Now Loading...',
   dataEmpty: 'No Data',
+  notSupported: 'Not Supported',
   login: 'Login',
   logout: 'Logout',
+  getPasswd: 'Find Password',
   back: 'Back',
   copyright: 'Copyright © 2019-2025 小白fate'
 }

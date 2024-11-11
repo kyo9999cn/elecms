@@ -52,10 +52,10 @@ export default [
         path: '/system/develop',
         children: [
           {
-            label: 'menu.system.develop.entry',
-            name: 'DevelopEntry',
+            label: 'menu.system.develop.entries',
+            name: 'DevelopEntries',
             title: '设置项',
-            path: '/system/develop/entry'
+            path: '/system/develop/entries'
           },
           {
             label: 'menu.system.develop.models',

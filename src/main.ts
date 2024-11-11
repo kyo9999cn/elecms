@@ -9,6 +9,9 @@ import 'element-plus/dist/index.css'
 import 'remixicon/fonts/remixicon.css'
 import './assets/css/style.scss'
 
+// 开启权限
+import './permiss'
+
 const app = createApp(App)
 app.use(ElementPlus).use(router).use(pinia).mount('#app')
 

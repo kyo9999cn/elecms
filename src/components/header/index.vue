@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import screenfull from 'screenfull'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import avatar from '@/assets/images/avatar.jpg'
 import { useAppStore } from '@/store/modules/app'
 import EleLang from './lang.vue'
+import { getLang } from '@/locales'
+import { useUserStore } from '@/store/modules/user'
 
 const appStore = useAppStore()
+const { clearUserinfo } = useUserStore()
 const isFullscreen = ref(false)
+const router = useRouter()
 
 const onTaggleLeftMenu = () => {
   appStore.collapse = !appStore.collapse
@@ -18,6 +23,13 @@ const onTaggleLeftMenu = () => {
 const onFullscreen = () => {
   if (screenfull.isEnabled) {
     screenfull.toggle()
+  }
+}
+
+const onUserCommond = (command: string | number | object) => {
+  if (command === 'logout') {
+    clearUserinfo()
+    router.push('/login')
   }
 }
 
@@ -45,7 +57,11 @@ window.onresize = () => {
       </div>
     </div>
     <div class="ele-header-right">
-      <el-dropdown trigger="click" popper-class="ele-drop">
+      <el-dropdown
+        trigger="click"
+        popper-class="ele-drop"
+        @command="onUserCommond"
+      >
         <div class="ele-userbox">
           <el-space :size="10">
             <el-avatar :src="avatar" :size="28" />
@@ -53,9 +69,15 @@ window.onresize = () => {
           </el-space>
         </div>
         <template #dropdown>
-          <el-dropdown-item>个人资料</el-dropdown-item>
-          <el-dropdown-item>安全设置</el-dropdown-item>
-          <el-dropdown-item divided>退出登录</el-dropdown-item>
+          <el-dropdown-item command="profile">
+            {{ getLang('user.profile', '个人资料', appStore.lang) }}
+          </el-dropdown-item>
+          <el-dropdown-item command="security">
+            {{ getLang('user.security', '安全设置', appStore.lang) }}
+          </el-dropdown-item>
+          <el-dropdown-item divided command="logout">
+            {{ getLang('logout', '退出登录', appStore.lang) }}
+          </el-dropdown-item>
         </template>
       </el-dropdown>
       <div class="ele-header-actions">

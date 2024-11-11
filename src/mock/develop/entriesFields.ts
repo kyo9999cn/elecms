@@ -1,6 +1,6 @@
 export default [
   {
-    url: '/api/develop/entry/fields/model',
+    url: '/api/develop/entries/fields/model',
     method: 'get',
     response: () => {
       return {
@@ -8,14 +8,14 @@ export default [
         message: 'success',
         data: {
           name: 'entryFields',
-          label: 'form.developEntryFields.model',
-          title: '字段',
+          label: 'form.developEntriesFields.model',
+          title: '设置字段',
           columns: [
             {
               key: 'name',
               dataKey: 'name',
               title: '字段名称',
-              label: 'form.developEntryFields.name',
+              label: 'form.developEntriesFields.name',
               langKey: 'label',
               width: 220
             },
@@ -23,7 +23,7 @@ export default [
               key: 'type',
               dataKey: 'type',
               title: '类型',
-              label: 'form.developEntryFields.type',
+              label: 'form.developEntriesFields.type',
               langKey: 'type_label',
               width: 160
             },
@@ -31,13 +31,13 @@ export default [
               key: 'memo',
               dataKey: 'memo',
               title: '备注',
-              label: 'form.developEntryFields.memo'
+              label: 'form.developEntriesFields.memo'
             },
             {
               key: 'status',
               dataKey: 'status',
               title: '状态',
-              label: 'form.developEntryFields.status',
+              label: 'form.developEntriesFields.status',
               type: 'switch',
               width: 80,
               fixed: 'right'
@@ -64,32 +64,32 @@ export default [
             {
               name: 'name',
               title: '字段名称',
-              label: 'form.developEntryFields.name',
+              label: 'form.developEntriesFields.name',
               type: 'input',
-              placeholder: 'form.developEntryFields.name'
+              placeholder: 'form.developEntriesFields.name'
             }
           ],
           fields: [
             {
               name: 'name',
-              label: 'form.developEntryFields.name',
+              label: 'form.developEntriesFields.name',
               title: '字段名称',
               type: 'input',
-              placeholder: 'form.developEntryFields.name'
+              placeholder: 'form.developEntriesFields.name'
             },
             {
               name: 'label',
-              label: 'form.developEntryFields.label',
+              label: 'form.developEntriesFields.label',
               title: '多语言标签',
               type: 'input',
-              placeholder: 'form.developEntryFields.label'
+              placeholder: 'form.developEntriesFields.label'
             },
             {
               name: 'type_key',
-              label: 'form.developEntryFields.type',
+              label: 'form.developEntriesFields.type',
               title: '字段类型',
               type: 'select',
-              placeholder: 'form.developEntryFields.type',
+              placeholder: 'form.developEntriesFields.type',
               options: [
                 {
                   label: 'field.input',
@@ -160,49 +160,49 @@ export default [
             },
             {
               name: 'default_value',
-              label: 'form.developEntryFields.defaultValue',
+              label: 'form.developEntriesFields.defaultValue',
               title: '默认值',
               type: 'input',
-              placeholder: 'form.developEntryFields.defaultValue'
+              placeholder: 'form.developEntriesFields.defaultValue'
             },
             {
               name: 'is_numerical',
-              label: 'form.developEntryFields.numerical',
+              label: 'form.developEntriesFields.numerical',
               title: '是否数值型',
               type: 'switch'
             },
             {
               name: 'is_async',
-              label: 'form.developEntryFields.async',
+              label: 'form.developEntriesFields.async',
               title: '开启异步',
               type: 'switch'
             },
             {
               name: 'url',
-              label: 'form.developEntryFields.url',
+              label: 'form.developEntriesFields.url',
               title: '调用地址',
               type: 'input',
               condition: ['is_async', 1],
-              placeholder: 'form.developEntryFields.url'
+              placeholder: 'form.developEntriesFields.url'
             },
             {
               name: 'options',
-              label: 'form.developEntryFields.options',
+              label: 'form.developEntriesFields.options',
               title: '选项值',
               type: 'textarea',
               condition: ['type_key', ['select', 'checkbox']],
-              placeholder: 'form.developEntryFields.options'
+              placeholder: 'form.developEntriesFields.options'
             },
             {
               name: 'memo',
-              label: 'form.developEntryFields.memo',
+              label: 'form.developEntriesFields.memo',
               title: '备注',
               type: 'textarea',
-              placeholder: 'form.developEntryFields.memo'
+              placeholder: 'form.developEntriesFields.memo'
             },
             {
               name: 'status',
-              label: 'form.developEntryFields.status',
+              label: 'form.developEntriesFields.status',
               title: '状态',
               type: 'switch'
             }
@@ -215,7 +215,7 @@ export default [
     }
   },
   {
-    url: '/api/develop/entry/fields',
+    url: '/api/develop/entries/fields',
     method: 'get',
     response: () => {
       return {
@@ -245,7 +245,7 @@ export default [
             status: 1
           }
         ],
-        total: 1,
+        total: 2,
         redirect: '',
         wait: 3,
         status: 'success'

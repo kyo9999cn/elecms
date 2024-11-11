@@ -66,19 +66,19 @@ export default [
         },
         children: [
           {
-            path: 'entry',
-            name: 'DevelopEntry',
+            path: 'entries',
+            name: 'DevelopEntries',
             meta: {
-              label: 'menu.system.develop.entry',
+              label: 'menu.system.develop.entries',
               title: '设置项'
             },
             children: [
               {
                 path: '',
-                name: 'DevelopEntryMain',
-                component: () => import('@/views/system/develop/entry.vue'),
+                name: 'DevelopEntriesMain',
+                component: () => import('@/views/system/develop/entries.vue'),
                 meta: {
-                  label: 'menu.system.develop.entry',
+                  label: 'menu.system.develop.entries',
                   title: '设置项'
                 }
               },
@@ -90,18 +90,38 @@ export default [
                   title: '设置项字段'
                 },
                 component: () =>
-                  import('@/views/system/develop/entryFields.vue')
+                  import('@/views/system/develop/entriesFields.vue')
               }
             ]
           },
           {
             path: 'models',
             name: 'DevelopModels',
-            component: () => import('@/views/system/develop/models.vue'),
             meta: {
               label: 'menu.system.develop.models',
               title: '模型管理'
-            }
+            },
+            children: [
+              {
+                path: '',
+                name: 'DevelopModelsMain',
+                component: () => import('@/views/system/develop/models.vue'),
+                meta: {
+                  label: 'menu.system.develop.models',
+                  title: '模型管理'
+                }
+              },
+              {
+                path: 'fields/:id',
+                name: 'DevelopModelsFields',
+                meta: {
+                  label: 'menu.system.develop.modelFields',
+                  title: '模型字段'
+                },
+                component: () =>
+                  import('@/views/system/develop/modelsFields.vue')
+              }
+            ]
           },
           {
             path: 'menus',

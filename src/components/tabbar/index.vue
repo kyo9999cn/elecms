@@ -4,21 +4,13 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 import settings from '@/settings'
-import { EleLocale } from '@/locales'
+import { getLang } from '@/locales'
 
 const appStore = useAppStore()
 const router = useRouter()
 
 const app = storeToRefs(appStore)
 const activeTab = ref(app.currentMenu)
-
-const getLang = (label: string, title: string) => {
-  return EleLocale[appStore.lang] &&
-    EleLocale[appStore.lang] &&
-    EleLocale[appStore.lang][label]
-    ? EleLocale[appStore.lang][label]
-    : title
-}
 
 const onActiveTab = (pane: any) => {
   appStore.currentMenu = pane.paneName
@@ -48,6 +40,17 @@ const onDropdown = (command: string | number | object) => {
     router.go(0)
   }
 }
+
+// 判断当前路由是否为选项卡值的子路由，并激活父路由
+const onCheckRouter = () => {
+  router.currentRoute.value.matched.forEach((vo: any) => {
+    const current: any = appStore.tabMenus.find((v) => vo.path === v.path)
+    if (current && current.path) {
+      appStore.currentMenu = current.path
+    }
+  })
+}
+onCheckRouter()
 </script>
 
 <template>
@@ -62,7 +65,7 @@ const onDropdown = (command: string | number | object) => {
         <el-tab-pane
           v-for="(item, i) in appStore.tabMenus"
           :key="item.path"
-          :label="getLang(item.label, item.title)"
+          :label="getLang(item.label, item.title, appStore.lang)"
           :name="item.path"
           :closable="i === 0 ? false : true"
         ></el-tab-pane>
@@ -73,9 +76,15 @@ const onDropdown = (command: string | number | object) => {
         <el-icon><i class="ri-more-2-line"></i></el-icon>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item command="close-other">关闭其他</el-dropdown-item>
-            <el-dropdown-item command="close-all">关闭全部</el-dropdown-item>
-            <el-dropdown-item command="refresh">刷新当前页</el-dropdown-item>
+            <el-dropdown-item command="close-other">
+              {{ getLang('actions.closeOther', '关闭其他', appStore.lang) }}
+            </el-dropdown-item>
+            <el-dropdown-item command="close-all">
+              {{ getLang('actions.closeAll', '关闭全部', appStore.lang) }}
+            </el-dropdown-item>
+            <el-dropdown-item command="refresh">
+              {{ getLang('actions.refreshPage', '刷新当前页', appStore.lang) }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

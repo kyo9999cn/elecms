@@ -149,6 +149,9 @@
 .el-select__wrapper {
     font-size: 13.5px;
 }
+.el-input-number .el-input__inner {
+    text-align: left;
+}
 
 // 面包屑设置
 .el-breadcrumb {
@@ -199,6 +202,11 @@
 }
 .el-drawer .el-drawer__header {
     margin-bottom: 20px;
+}
+
+// 步骤
+.el-step__title {
+    font-size: 14px;
 }
 
 // 滚动条样式

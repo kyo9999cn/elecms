@@ -69,7 +69,7 @@ const onCloseMenu = (value: any) => {
     <el-header>
       <div class="ele-logo">
         <img :src="logo" />
-        <h2 v-if="!appStore.collapse">{{ settings.appliactionName }}</h2>
+        <h2 v-if="!appStore.collapse">{{ settings.applicationName }}</h2>
       </div>
     </el-header>
     <el-main>

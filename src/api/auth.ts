@@ -8,6 +8,14 @@ export const login = (loginData: any) => {
   })
 }
 
+export const mobileLogin = (loginData: any) => {
+  return http.request({
+    url: 'auth/login/mobile',
+    method: 'post',
+    data: loginData
+  })
+}
+
 export const getUserInfo = () => {
   return http.request({
     url: 'auth/userinfo'

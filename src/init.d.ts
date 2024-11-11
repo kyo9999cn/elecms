@@ -4,3 +4,5 @@ declare module '*.vue' {
   const Component: DefineComponent<{}, {}, any>
   export default Component
 }
+
+declare module 'js-cookie'

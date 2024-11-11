@@ -113,6 +113,10 @@ const props = defineProps({
     type: String,
     default: '100px'
   },
+  formItemCol: {
+    type: Number,
+    default: 24
+  },
   // 树状表格
   treeTable: {
     type: Boolean,
@@ -129,6 +133,11 @@ const props = defineProps({
   back: {
     type: Boolean,
     default: false
+  },
+  // 分页
+  pageSize: {
+    type: Number,
+    default: 20
   }
 })
 
@@ -175,8 +184,8 @@ const searchData: any = ref(props.defaultSearchData)
 
 // 分页
 const currentPage = ref(1)
-const pageSize = ref(15)
-const totalPage = ref(100)
+const pageSize = ref(props.pageSize)
+const totalPage = ref(0)
 
 // 操作
 const action = ref('add')
@@ -220,6 +229,7 @@ const onGetList = () => {
       setTimeout(() => {
         loading.value = false
         tableData.value = res.data
+        totalPage.value = res.total
       }, 500)
     })
     .catch(() => {
@@ -239,6 +249,7 @@ const onSearch = (formData: any) => {
 // 新增
 const onAdd = () => {
   action.value = 'add'
+  formData.value = {}
   formTitle.value =
     getLang(props.addBtn, '新建', appStore.lang) +
     (appStore.lang !== 'zhCn' ? ' ' : '') +
@@ -323,7 +334,7 @@ const onAction = (key: string, row: any) => {
     // 自定义操作
     emit('custom-action', key, row)
   }
-  console.log(key, row)
+  // console.log(key, row)
 }
 
 // 保存
@@ -538,6 +549,7 @@ watch(appStore, () => {
         :fields="formFields"
         :label-width="formLabelWidth"
         label-suffix="："
+        :item-col="props.formItemCol"
         :submitable="false"
         :resetable="false"
       >
@@ -568,6 +580,7 @@ watch(appStore, () => {
         :fields="formFields"
         :label-width="formLabelWidth"
         label-suffix="："
+        :item-col="props.formItemCol"
         :resetable="false"
         @cancel="onCancel"
       />

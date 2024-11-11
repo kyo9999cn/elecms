@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TablePage } from '@/layout'
 
-const model = 'develop/menus'
+const model = 'develop/entries/fields'
 </script>
 
 <template>
@@ -9,13 +9,9 @@ const model = 'develop/menus'
     :model="model"
     form-label-width="140px"
     dialog-width="520px"
-    tree-table
+    back
     sortable
-  >
-    <template #table-column__icon="{ row }">
-      <el-icon class="ele-icon"><i :class="`ri-${row.icon}-line`"></i></el-icon>
-    </template>
-  </table-page>
+  ></table-page>
 </template>
 
 <style lang="scss" scoped>

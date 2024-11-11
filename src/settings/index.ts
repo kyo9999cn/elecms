@@ -1,10 +1,13 @@
 export default {
-  appliactionName: 'Elecms Pro',
+  applicationName: 'Elecms Pro',
+  applicationDescription: '基于Vue3+Element UI的企业应用快速开发框架',
 
   // 首页路由
   indexLabel: 'menu.dashboard',
   indexName: '工作台',
   indexPath: '/dashboard',
+  // 主题
+  loginTheme: 'light', // dark | light, 默认light
   // 侧边栏
   asideDefaultWidth: 200,
   asideCollapseWidth: 64,

@@ -7,17 +7,21 @@ export default [
         code: 200,
         message: 'success',
         data: {
-          name: 'roles',
+          name: 'menus',
+          label: 'form.developMenus.model',
+          title: '系统菜单',
           columns: [
             {
               key: 'name',
               dataKey: 'name',
+              label: 'form.developMenus.name',
               title: '菜单名称',
               width: 260
             },
             {
               key: 'icon',
               dataKey: 'icon',
+              label: 'form.developMenus.icon',
               title: '图标',
               align: 'center',
               width: 60,
@@ -26,6 +30,7 @@ export default [
             {
               key: 'memo',
               dataKey: 'memo',
+              label: 'form.developMenus.memo',
               title: '备注'
             }
           ],
@@ -35,21 +40,85 @@ export default [
               key: 'edit',
               type: 'primary',
               event: 'edit',
-              btn: '修改'
+              label: 'actions.edit',
+              title: '修改'
             },
             {
               key: 'delete',
               type: 'danger',
               event: 'delete',
-              btn: '删除'
+              label: 'actions.delete',
+              title: '删除'
             }
           ],
           search_fields: [
             {
               name: 'name',
-              label: '菜单名称',
+              label: 'form.developMenus.name',
+              title: '菜单名称',
               type: 'input',
-              placeholder: '菜单名称'
+              placeholder: 'form.developMenus.name'
+            }
+          ],
+          fields: [
+            {
+              name: 'name',
+              label: 'form.developMenus.name',
+              title: '菜单名称',
+              type: 'input',
+              placeholder: 'form.developMenus.name'
+            },
+            {
+              name: 'label',
+              label: 'form.developMenus.label',
+              title: '多语言标签',
+              type: 'input',
+              placeholder: 'form.developMenus.label'
+            },
+            {
+              name: 'icon',
+              label: 'form.developMenus.icon',
+              title: '图标',
+              type: 'icon-select',
+              placeholder: 'form.developMenus.icon'
+            },
+            {
+              name: 'parent_id',
+              title: '上级菜单',
+              label: 'form.developMenus.parent',
+              type: 'tree-select',
+              options: [],
+              async: 1,
+              url: 'develop/menus',
+              valueKey: 'id',
+              labelKey: 'name',
+              placeholder: 'form.developMenus.parent'
+            },
+            {
+              name: 'is_jump',
+              label: 'form.developMenus.jump',
+              title: '跳转链接',
+              type: 'switch'
+            },
+            {
+              name: 'path',
+              label: 'form.developMenus.path',
+              title: '访问地址',
+              type: 'input',
+              placeholder: 'form.developMenus.path'
+            },
+            {
+              name: 'memo',
+              label: 'form.developMenus.memo',
+              title: '备注',
+              type: 'textarea',
+              placeholder: 'form.developMenus.memo'
+            },
+            {
+              name: 'status',
+              label: 'form.developMenus.status',
+              title: '状态',
+              type: 'switch'
             }
           ]
         },
@@ -72,7 +141,8 @@ export default [
             name: '工作台',
             alias: 'dashboard',
             icon: 'speed-up',
-            memo: '工作台'
+            memo: '工作台',
+            sort: 1
           },
           {
             id: '2',
@@ -80,6 +150,7 @@ export default [
             alias: 'system',
             icon: 'settings',
             memo: '系统设置',
+            sort: 2,
             children: [
               {
                 id: '3',

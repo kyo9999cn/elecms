@@ -49,5 +49,6 @@ export default {
   },
   login: '登录',
   logout: '退出登录',
+  getPasswd: '忘记密码',
   copyright: 'Copyright © 2019-2025 小白fate'
 }

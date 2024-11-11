@@ -1,3 +1,8 @@
+:root {
+    --login-text-color: rgba(0, 0, 0, 0.7);
+    --login-tabs-border-color: rgba(0, 0, 0, 0.1);
+}
+
 body,
 html {
     margin: 0;
@@ -107,9 +112,11 @@ p {
     color: rgba($color: #ffffff, $alpha: 0.6);
     border-top: 1px solid rgba($color: #ffffff, $alpha: 0.1);
 }
+
 .ele-aside .el-footer .el-icon {
     font-size: 18px;
 }
+
 .ele-aside .el-footer .ele-footer-btn {
     cursor: pointer;
 }
@@ -138,11 +145,11 @@ p {
 }
 
 .ele-tabbar .ele-tabbar-main {
-    width: calc(100% - 26px);
+    width: calc(100% - 36px);
 }
 
 .ele-tabbar .ele-tabbar-action {
-    width: 26px;
+    width: 36px;
     height: 40px;
     display: flex;
     justify-content: center;
@@ -198,6 +205,7 @@ p {
 .ele-form-box {
     padding-top: 20px;
 }
+
 .ele-form .el-divider__text {
     font-size: 13px;
 }
@@ -209,6 +217,7 @@ p {
 .ele-drop {
     min-width: 110px;
 }
+
 .ele-drop-hd {
     color: var(--el-text-color-primary);
 }
@@ -280,9 +289,135 @@ p {
     text-align: center;
 }
 
+.ele-icon-select .el-select-dropdown__list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+    padding: 0;
+}
+
+.ele-icon-select .el-select-dropdown__list .el-select-dropdown__item {
+    width: 12.5%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    border: 1px solid #fafbfc;
+    box-sizing: border-box;
+}
+
 // 进度条
 #nprogress .bar {
     background: #1677ff !important;
+}
+
+// 登录页
+.login-body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-body .login-header {
+    display: flex;
+    align-items: center;
+    padding-top: 8vh;
+}
+
+.login-body .login-header .ele-logo {
+    width: 45px;
+    height: 45px;
+    display: block;
+    margin-right: 10px;
+}
+
+.login-body .login-header h2 {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.login-body .login-info {
+    font-weight: 300;
+    font-size: 13.5px;
+    color: var(--login-text-color);
+    padding-top: 10px;
+}
+
+.login-body .login-form {
+    width: 280px;
+    padding-top: 60px;
+}
+
+.login-body .login-form .login-tabs {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--login-tabs-border-color);
+    padding: 0 20px;
+}
+
+.login-body .login-form .el-form {
+    padding-top: 30px;
+}
+
+.login-body .login-form .el-form .el-form-item .el-icon {
+    color: var(--el-text-color-primary);
+    font-size: 15px;
+}
+
+.login-body .login-form .el-tabs__nav-wrap:after {
+    height: 0px;
+}
+
+.login-body .login-form .el-tabs__item {
+    padding: 0 10px;
+}
+
+.login-body .login-flex-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-footer {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--login-text-color);
+}
+
+// 暗色模式
+.login-body.dark {
+    background: #001529;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.login-body.dark .login-info,
+.login-body.dark .login-footer {
+    --login-text-color: rgba(255, 255, 255, 0.6);
+}
+
+.login-body.dark .login-form .login-tabs {
+    --login-tabs-border-color: rgba(255, 255, 255, 0.2);
+}
+
+.login-body.dark .el-tabs__item,
+.login-body.dark .el-checkbox__label {
+    --el-text-color-primary: rgba(255, 255, 255, 0.4);
+}
+
+.login-body.dark .el-tabs__nav-wrap:after {
+    --el-border-color-light: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -300,17 +435,25 @@ p {
     color: red;
 }
 
+// 边距
+.mt {
+    margin-top: 16px;
+}
+
 
 // 多语言样式
 .app__en .el-menu .ele-menu-hd {
     font-weight: bold;
 }
+
 .app__en .ele-aside-hd {
     font-weight: bold;
 }
+
 .app__en .ele-tabbar-main .el-tabs--card>.el-tabs__header .el-tabs__item {
     font-weight: bold;
 }
+
 .app__en .el-table--small .cell {
     font-size: 13px;
 }

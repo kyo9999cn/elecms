@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { login, getUserInfo } from '@/api/auth'
+import { login, mobileLogin, getUserInfo } from '@/api/auth'
 import { removeToken, setToken } from '@/utils/token'
 
 export const useUserStore = defineStore({
@@ -13,6 +13,21 @@ export const useUserStore = defineStore({
     async login(username: string, password: string) {
       const { data } = await login({ username, password })
       if (data) {
+        // 获取成功，保存Token和Userinfo
+        this.setToken(data.token)
+        this.setUserinfo(data)
+        // 返回获取Data
+        return Promise.resolve(data)
+      }
+    },
+    // 手机号登录
+    async mobileLogin(mobile: string, vcode: string) {
+      const { data } = await mobileLogin({ mobile, vcode })
+      if (data) {
+        // 获取成功，保存Token和Userinfo
+        this.setToken(data.token)
+        this.setUserinfo(data)
+        // 返回获取Data
         return Promise.resolve(data)
       }
     },

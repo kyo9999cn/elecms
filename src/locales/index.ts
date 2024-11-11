@@ -28,6 +28,9 @@ Object.keys(langs).forEach((key) => {
 
 // 获取语言标签值
 const getLang = (label: string, title: string, lang = 'zhCn') => {
+  if ((!label || label === '') && (!title || title === '')) {
+    return ''
+  }
   return EleLocale[lang] && EleLocale[lang] && EleLocale[lang][label]
     ? EleLocale[lang][label]
     : title
