@@ -41,23 +41,34 @@ const passwdRules = {
 }
 
 // 重发验证码时间
-const reSendTime = ref(60)
+const reSec = 60
+const rTime = (localStorage.getItem('passwdSendTime') as string) ?? '60'
+const reSendTime = ref(rTime ? parseInt(rTime, 10) : reSec)
 const sendSms = ref(false)
+
+const onTimer = () => {
+  const timer = setInterval(() => {
+    if (reSendTime.value > 1) {
+      reSendTime.value -= 1
+      localStorage.setItem('passwdSendTime', reSendTime.value.toString())
+    } else {
+      reSendTime.value = reSec
+      localStorage.setItem('passwdSendTime', reSec.toString())
+      clearInterval(timer)
+      sendSms.value = false
+    }
+  }, 1000)
+}
+if (reSendTime.value !== 60) {
+  onTimer()
+}
 
 // 获取验证码
 const onGetVcode = () => {
   // 正式使用时使用异步发送短信验证码
   // 发送成功后执行重发计时器
   sendSms.value = true
-  const timer = setInterval(() => {
-    if (reSendTime.value > 1) {
-      reSendTime.value -= 1
-    } else {
-      reSendTime.value = 60
-      clearInterval(timer)
-      sendSms.value = false
-    }
-  }, 1000)
+  onTimer()
 }
 
 const onStep = async (formEl: FormInstance | undefined) => {
@@ -75,6 +86,10 @@ const onStep = async (formEl: FormInstance | undefined) => {
       console.log('error submit!', fields)
     }
   })
+}
+
+const onBackLogin = () => {
+  router.push('/login')
 }
 </script>
 
@@ -134,7 +149,11 @@ const onStep = async (formEl: FormInstance | undefined) => {
                 <el-icon><i class="ri-lock-line"></i></el-icon>
               </template>
             </el-input>
-            <el-button v-if="!sendSms" style="width: 40%" @click="onGetVcode">
+            <el-button
+              v-if="reSendTime === reSec"
+              style="width: 40%"
+              @click="onGetVcode"
+            >
               获取验证码
             </el-button>
             <el-button v-else style="width: 40%" disabled>
@@ -143,13 +162,21 @@ const onStep = async (formEl: FormInstance | undefined) => {
           </div>
         </el-form-item>
         <el-form-item label="" style="padding-top: 40px">
-          <el-button
-            type="primary"
-            style="width: 100%"
-            @click="onStep(mobileRef)"
-          >
-            下一步
-          </el-button>
+          <div style="width: 100%">
+            <el-button
+              type="primary"
+              style="width: 100%"
+              @click="onStep(mobileRef)"
+            >
+              下一步
+            </el-button>
+            <el-button
+              style="width: 100%; margin-top: 10px"
+              @click="onBackLogin"
+            >
+              返回登录
+            </el-button>
+          </div>
         </el-form-item>
       </el-form>
       <el-form
@@ -177,13 +204,21 @@ const onStep = async (formEl: FormInstance | undefined) => {
           </el-input>
         </el-form-item>
         <el-form-item label="" style="padding-top: 40px">
-          <el-button
-            type="primary"
-            style="width: 100%"
-            @click="onStep(passwdRef)"
-          >
-            下一步
-          </el-button>
+          <div style="width: 100%">
+            <el-button
+              type="primary"
+              style="width: 100%"
+              @click="onStep(passwdRef)"
+            >
+              下一步
+            </el-button>
+            <el-button
+              style="width: 100%; margin-top: 10px"
+              @click="onBackLogin"
+            >
+              返回登录
+            </el-button>
+          </div>
         </el-form-item>
       </el-form>
       <div v-if="step === 2" class="success-box">
@@ -194,14 +229,7 @@ const onStep = async (formEl: FormInstance | undefined) => {
         </div>
         <div class="mt">重新设置密码成功！</div>
         <div style="padding-top: 40px; width: 100%">
-          <el-button
-            style="width: 100%"
-            @click="
-              () => {
-                router.push('/login')
-              }
-            "
-          >
+          <el-button style="width: 100%" @click="onBackLogin">
             返回登录
           </el-button>
         </div>
@@ -222,5 +250,8 @@ const onStep = async (formEl: FormInstance | undefined) => {
   padding-top: 40px;
   font-size: 13.5px;
   width: 280px;
+}
+.el-button + .el-button {
+  margin: 0px;
 }
 </style>

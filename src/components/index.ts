@@ -5,5 +5,14 @@ import IconSelect from './form/IconSelect.vue'
 import EleHeader from './header/index.vue'
 import EleAside from './aside/index.vue'
 import EleTabbar from './tabbar/index.vue'
+import EleChart from './chart/index.vue'
 
-export { EleForm, UploadImage, EleHeader, EleAside, EleTabbar, IconSelect }
+export {
+  EleForm,
+  UploadImage,
+  EleHeader,
+  EleAside,
+  EleTabbar,
+  EleChart,
+  IconSelect
+}

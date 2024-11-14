@@ -396,6 +396,47 @@ p {
     color: var(--login-text-color);
 }
 
+// 统计组件
+.statistic-card {
+    border: 1px solid #dfdfdf;
+    padding: 14px;
+    border-radius: 2px;
+    display: flex;
+}
+
+.statistic-card .icon {
+    background-color: var(--el-color-primary-light-9);
+    color: var(--el-color-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    margin-right: 20px;
+}
+
+.statistic-card .icon.icon-primary {
+    background-color: var(--el-color-primary-light-9);
+    color: var(--el-color-primary);
+}
+
+.statistic-card .icon.icon-success {
+    background-color: var(--el-color-success-light-9);
+    color: var(--el-color-success);
+}
+
+.statistic-card .icon.icon-warning {
+    background-color: var(--el-color-warning-light-9);
+    color: var(--el-color-warning);
+}
+
+.statistic-card .icon.icon-danger {
+    background-color: var(--el-color-danger-light-9);
+    color: var(--el-color-danger);
+}
+
 // 暗色模式
 .login-body.dark {
     background: #001529;

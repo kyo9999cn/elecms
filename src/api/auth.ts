@@ -18,6 +18,23 @@ export const mobileLogin = (loginData: any) => {
 
 export const getUserInfo = () => {
   return http.request({
-    url: 'auth/userinfo'
+    url: 'auth/userinfo',
+    method: 'get'
+  })
+}
+
+export const saveUserInfo = (data: any) => {
+  return http.request({
+    url: 'auth/userinfo',
+    method: 'post',
+    data
+  })
+}
+
+export const savePassword = (data: any) => {
+  return http.request({
+    url: 'auth/password',
+    method: 'post',
+    data
   })
 }

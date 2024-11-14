@@ -42,6 +42,15 @@ export default {
     permissSet: '权限设置',
     fieldsSet: '字段设置'
   },
+  message: {
+    confirmTitle: '操作提示',
+    deleteConfirm: '您确定要删除数据吗?',
+    required: {
+      opassword: '请输入原密码',
+      password: '请输入新密码',
+      cpassword: '请输入确认密码'
+    }
+  },
   locales: {
     zhCn: '简体中文',
     zhTw: '繁体中文',

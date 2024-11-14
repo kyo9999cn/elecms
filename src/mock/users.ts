@@ -132,6 +132,13 @@ export default [
           form_label_width: '136px',
           fields: [
             {
+              name: 'avatar',
+              title: '头像',
+              label: 'form.users.avatar',
+              type: 'upload-image',
+              placeholder: 'form.users.avatar'
+            },
+            {
               name: 'username',
               title: '用户名',
               label: 'form.users.username',
@@ -210,6 +217,7 @@ export default [
           {
             id: '1',
             username: 'admin',
+            role_id: 1,
             role: {
               id: 1,
               name: '系统管理员',
@@ -228,6 +236,7 @@ export default [
           {
             id: '2',
             username: 'test',
+            role_id: 2,
             role: {
               id: 2,
               name: '普通管理员',

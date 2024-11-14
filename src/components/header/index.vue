@@ -26,7 +26,26 @@ const onFullscreen = () => {
   }
 }
 
+const onSelectUserMenu = (label: any, title: any, value: any) => {
+  appStore.currentMenu = value
+  const tabExists = appStore.tabMenus.some((item) => item.path === value)
+  if (!tabExists) {
+    appStore.tabMenus.push({
+      label,
+      title,
+      path: value
+    })
+  }
+  router.push(value)
+}
+
 const onUserCommond = (command: string | number | object) => {
+  if (command === 'profile') {
+    onSelectUserMenu('user.profile', '个人资料', '/user/profile')
+  }
+  if (command === 'password') {
+    onSelectUserMenu('user.password', '修改密码', '/user/password')
+  }
   if (command === 'logout') {
     clearUserinfo()
     router.push('/login')
@@ -72,8 +91,8 @@ window.onresize = () => {
           <el-dropdown-item command="profile">
             {{ getLang('user.profile', '个人资料', appStore.lang) }}
           </el-dropdown-item>
-          <el-dropdown-item command="security">
-            {{ getLang('user.security', '安全设置', appStore.lang) }}
+          <el-dropdown-item command="password">
+            {{ getLang('user.password', '修改密码', appStore.lang) }}
           </el-dropdown-item>
           <el-dropdown-item divided command="logout">
             {{ getLang('logout', '退出登录', appStore.lang) }}

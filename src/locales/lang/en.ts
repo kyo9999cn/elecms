@@ -25,8 +25,9 @@ export default {
     }
   },
   user: {
+    center: 'User Center',
     profile: 'Profile',
-    security: 'Security'
+    password: 'Change Password'
   },
   settings: {
     basic: {
@@ -69,6 +70,7 @@ export default {
       username: 'Username',
       password: 'Password',
       role: 'User Role',
+      avatar: 'Avatar',
       realname: 'Real Name',
       mobile: 'Mobile Number',
       email: 'E-mail',
@@ -139,6 +141,12 @@ export default {
       type: 'Operation Type',
       username: 'Username',
       content: 'Operation Description'
+    },
+    userPassword: {
+      model: 'Change Password',
+      opassword: 'Old Password',
+      password: 'New Password',
+      cpassword: 'Confirm Password'
     }
   },
   actions: {
@@ -162,6 +170,7 @@ export default {
     save: 'Save',
     sort: 'Sort',
     saveSettings: 'Save Settings',
+    saveChanges: 'Save Changes',
     custom: 'Custom Actions',
     permissSet: 'Permission Settings',
     fieldsSet: 'Fields Settings',
@@ -193,7 +202,18 @@ export default {
   },
   message: {
     confirmTitle: 'Confirmation Prompt',
-    deleteConfirm: 'Do you really want to delete this record?'
+    deleteConfirm: 'Do you really want to delete this record?',
+    password: {
+      opassword: 'Place Enter Your Old Password',
+      password: 'Place Enter Your New Password',
+      cpassword: 'Place Confirm Your Password',
+      match: "The New Password Can't Match The Old Passowrd",
+      notMatch: "Two Inputs Don't Match",
+      saveSuccess: 'Successfully saved user password changes'
+    },
+    profile: {
+      saveSuccess: 'Successfully saved user information changes'
+    }
   },
   locales: {
     zhCn: 'Simplified Chinese',
@@ -208,6 +228,20 @@ export default {
     createTime: 'Create Time',
     updateTime: 'Update Time',
     deleteTime: 'Delete Time'
+  },
+  dashboard: {
+    dayUsers: 'Daily active users',
+    monthUsers: 'Monthly active users',
+    upv: 'Website UV/PV',
+    ips: 'Website IP',
+    trends: 'Website Access Trends',
+    source: 'Website Access Source',
+    browsers: 'Top 10 Browsers',
+    keywords: 'Top 10 Search Keywords',
+    terminal: 'Terminal Distribution'
+  },
+  chart: {
+    loading: 'The Chart is Loading...'
   },
   tipExample: 'Here is an example tip',
   lastLoginTime: 'Last Login Time',

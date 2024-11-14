@@ -5,10 +5,13 @@ import logo from '@/assets/images/logo.png'
 import { useAppStore } from '@/store/modules/app'
 import settings from '@/settings'
 import { getLang } from '@/locales'
+import { useUserStore } from '@/store/modules/user'
 
 const appStore = useAppStore()
 const route = useRoute()
 const router = useRouter()
+
+const { clearUserinfo } = useUserStore()
 
 // 获取菜单信息
 const onGetMenu = (path: string) => {
@@ -61,6 +64,11 @@ const onOpenMenu = (value: any) => {
 const onCloseMenu = (value: any) => {
   const openedMenu: any = appStore.openedMenu.filter((v) => v !== value)
   appStore.openedMenu = openedMenu
+}
+
+const onLogout = () => {
+  clearUserinfo()
+  router.push('/login')
 }
 </script>
 
@@ -129,12 +137,14 @@ const onCloseMenu = (value: any) => {
       </el-menu>
     </el-main>
     <el-footer>
-      <el-space class="ele-footer-btn">
-        <el-icon><i class="ri-logout-box-line"></i></el-icon>
-        <span v-if="!appStore.collapse" class="ele-aside-hd">
-          {{ getLang('logout', '退出登录', appStore.lang) }}
-        </span>
-      </el-space>
+      <div class="ele-footer-btn" @click="onLogout">
+        <el-space>
+          <el-icon><i class="ri-logout-box-line"></i></el-icon>
+          <span v-if="!appStore.collapse" class="ele-aside-hd">
+            {{ getLang('logout', '退出登录', appStore.lang) }}
+          </span>
+        </el-space>
+      </div>
     </el-footer>
   </el-container>
 </template>

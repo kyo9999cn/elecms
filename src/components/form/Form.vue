@@ -15,6 +15,12 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
+  rules: {
+    type: Object,
+    default: () => {
+      return {}
+    }
+  },
   rowGutter: {
     type: Number,
     default: 16
@@ -70,6 +76,7 @@ const appStore = useAppStore()
 const formRef = ref<FormInstance>()
 const formData: any = ref(props.modelValue)
 const formFields: any = ref(props.fields)
+const formRules: any = ref(props.rules)
 const formOptions: any = ref({})
 
 const emit = defineEmits(['submit', 'reset', 'cancel'])
@@ -127,6 +134,22 @@ const onBuildOptions = () => {
 }
 onBuildOptions()
 
+// 格式化表单验证条件
+const formatRules = () => {
+  const rules: any = {}
+  Object.keys(formRules.value).forEach((key) => {
+    rules[key] = []
+    formRules.value[key].forEach((vo: any, idx: any) => {
+      if (!vo.validator || vo.validator === undefined) {
+        vo.message = getLang(vo.label, vo.messageDefault, appStore.lang)
+      }
+      rules[key][idx] = vo
+    })
+  })
+  formRules.value = rules
+}
+formatRules()
+
 // 判断条件
 const onCondition = (condition: any, formData: any) => {
   if (!condition) {
@@ -134,12 +157,10 @@ const onCondition = (condition: any, formData: any) => {
   }
   if (typeof condition[1] === 'number' || typeof condition[1] === 'string') {
     if (formData[condition[0]] === condition[1]) {
-      console.log(1)
       return true
     }
   }
   if (condition[1] instanceof Array) {
-    console.log(2)
     return condition[1].includes(formData[condition[0]])
   }
 }
@@ -149,9 +170,9 @@ const onSubmit = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate((valid: any) => {
     if (valid) {
+      console.log('submit')
       emit('submit', formData.value ?? {})
     } else {
-      console.log(valid)
       console.log('error submit!')
     }
   })
@@ -176,11 +197,16 @@ watch(
   },
   { deep: true }
 )
+
+watch(appStore, () => {
+  formatRules()
+})
 </script>
 
 <template>
   <el-form
     ref="formRef"
+    :rules="formRules"
     :model="formData"
     :label-width="props.labelWidth"
     :label-suffix="props.labelSuffix"
@@ -211,7 +237,7 @@ watch(
             :label="getLang(vo.label, vo.title ?? vo.label, appStore.lang)"
             :label-width="vo.labelWidth ?? props.labelWidth"
             :prop="vo.name"
-            :rules="vo.rules ?? []"
+            :rules="vo.rules ?? undefined"
             :style="{
               width: vo.width
                 ? typeof vo.width === 'number'
@@ -221,7 +247,10 @@ watch(
             }"
           >
             <div class="content">
-              <div v-if="!vo.editable || vo.editable === 1" class="warper">
+              <div
+                v-if="vo.editable === undefined || vo.editable === 1"
+                class="warper"
+              >
                 <el-input
                   v-if="vo.type === 'input'"
                   v-model="formData[vo.name]"
@@ -265,7 +294,7 @@ watch(
                   :placeholder="
                     getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
                   "
-                  :type="vo.type === 'datetime' ? 'datetime' : 'date'"
+                  :type="vo.type"
                   style="width: 100%"
                 />
                 <el-select
@@ -330,8 +359,11 @@ watch(
                     />
                   </el-space>
                 </template>
+                <template v-if="vo.type === 'div'">
+                  <div class="div-text">{{ formData[vo.name] }}</div>
+                </template>
               </div>
-              <div v-else class="warper">
+              <div v-else class="warper div-text">
                 {{
                   vo.display_field
                     ? formData[vo.display_field]
@@ -369,7 +401,10 @@ watch(
           }"
         >
           <div class="content">
-            <div v-if="!vo.editable || vo.editable === 1" class="warper">
+            <div
+              v-if="vo.editable === undefined || vo.editable === 1"
+              class="warper"
+            >
               <el-input
                 v-if="vo.type === 'input'"
                 v-model="formData[vo.name]"
@@ -401,7 +436,7 @@ watch(
                 :placeholder="
                   getLang(vo.placeholder, vo.title ?? vo.label, appStore.lang)
                 "
-                :type="vo.type === 'datetime' ? 'datetime' : 'date'"
+                :type="vo.type"
                 style="width: 100%"
               />
               <el-select
@@ -445,8 +480,11 @@ watch(
                   />
                 </el-space>
               </template>
+              <template v-if="vo.type === 'div'">
+                <div class="div-text">{{ formData[vo.name] }}</div>
+              </template>
             </div>
-            <div v-else class="warper">
+            <div v-else class="warper div-text">
               {{
                 vo.display_field
                   ? formData[vo.display_field]
@@ -469,6 +507,7 @@ watch(
     <slot name="custom-form" :data="formData" />
     <el-form-item
       v-if="props.submitable || props.resetable || props.cancelable"
+      class="mt"
     >
       <el-button
         v-if="props.submitable"
@@ -501,5 +540,8 @@ watch(
   width: 20px;
   text-align: right;
   cursor: pointer;
+}
+.div-text {
+  color: var(--el-text-color-primary);
 }
 </style>

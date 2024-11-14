@@ -33,23 +33,34 @@ const mobileRules = {
 const { login, mobileLogin } = useUserStore()
 
 // 重发验证码时间
-const reSendTime = ref(60)
+const reSec = 60
+const rTime = (localStorage.getItem('loginSendTime') as string) ?? '60'
+const reSendTime = ref(rTime ? parseInt(rTime, 10) : reSec)
 const sendSms = ref(false)
+
+const onTimer = () => {
+  const timer = setInterval(() => {
+    if (reSendTime.value > 1) {
+      reSendTime.value -= 1
+      localStorage.setItem('loginSendTime', reSendTime.value.toString())
+    } else {
+      reSendTime.value = reSec
+      localStorage.setItem('loginSendTime', reSec.toString())
+      clearInterval(timer)
+      sendSms.value = false
+    }
+  }, 1000)
+}
+if (reSendTime.value !== 60) {
+  onTimer()
+}
 
 // 获取验证码
 const onGetVcode = () => {
   // 正式使用时使用异步发送短信验证码
   // 发送成功后执行重发计时器
   sendSms.value = true
-  const timer = setInterval(() => {
-    if (reSendTime.value > 1) {
-      reSendTime.value -= 1
-    } else {
-      reSendTime.value = 60
-      clearInterval(timer)
-      sendSms.value = false
-    }
-  }, 1000)
+  onTimer()
 }
 
 // 找回密码
@@ -179,7 +190,11 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                 <el-icon><i class="ri-lock-line"></i></el-icon>
               </template>
             </el-input>
-            <el-button v-if="!sendSms" style="width: 40%" @click="onGetVcode">
+            <el-button
+              v-if="reSendTime === reSec"
+              style="width: 40%"
+              @click="onGetVcode"
+            >
               获取验证码
             </el-button>
             <el-button v-else style="width: 40%" disabled>
