@@ -20,7 +20,9 @@ const onActiveTab = (pane: any) => {
 const onRemoveTab = (path: any) => {
   const index = appStore.tabMenus.findIndex((vo) => vo.path === path)
   appStore.tabMenus = appStore.tabMenus.filter((vo) => vo.path !== path)
-  router.push(appStore.tabMenus[index - 1])
+  const currentTab = appStore.tabMenus[index - 1]
+  appStore.currentMenu = currentTab.path
+  router.push(currentTab.path)
 }
 
 const onDropdown = (command: string | number | object) => {
