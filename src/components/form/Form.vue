@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { FormInstance } from 'element-plus'
 import { ref, watch } from 'vue'
-import { UploadImage, IconSelect } from '@/components'
+import IconSelect from './IconSelect.vue'
+import UploadImage from './UploadImage.vue'
 import http from '@/utils/http'
 import { getLang } from '@/locales'
 import { useAppStore } from '@/store/modules/app'

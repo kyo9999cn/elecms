@@ -327,6 +327,17 @@ const onDelete = (id: number) => {
     .catch(() => {})
 }
 
+// 取消/关闭对话框
+const onCancel = () => {
+  if (props.formType === 'dialog') {
+    dialogVisible.value = false
+  }
+  if (props.formType === 'drawer') {
+    drawerVisible.value = false
+  }
+}
+
+// 定义列表操作
 const onAction = (key: string, row: any) => {
   if (key === 'edit') {
     onEdit(row)
@@ -341,22 +352,41 @@ const onAction = (key: string, row: any) => {
 
 // 保存
 const onSave = () => {
+  // 新建保存
   if (action.value === 'add') {
-    console.log(formData.value)
-    console.log(action.value)
+    http
+      .request({
+        url: `${modelKey.value}`,
+        method: 'post',
+        data: formData.value
+      })
+      .then((res: any) => {
+        // 新建后执行
+        ElMessage.success(res.message)
+        onGetList()
+        onCancel()
+      })
+      .catch((e: any) => {
+        ElMessage.error(e.message ?? '请求失败')
+      })
   }
+  // 修改保存
   if (action.value === 'edit') {
-    console.log(action.value)
-  }
-}
-
-// 取消/关闭对话框
-const onCancel = () => {
-  if (props.formType === 'dialog') {
-    dialogVisible.value = false
-  }
-  if (props.formType === 'drawer') {
-    drawerVisible.value = false
+    http
+      .request({
+        url: `${modelKey.value}`,
+        method: 'put',
+        data: formData.value
+      })
+      .then((res: any) => {
+        // 修改后执行
+        ElMessage.success(res.message)
+        onGetList()
+        onCancel()
+      })
+      .catch((e: any) => {
+        ElMessage.error(e.message ?? '请求失败')
+      })
   }
 }
 

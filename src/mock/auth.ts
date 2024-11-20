@@ -42,9 +42,6 @@ export default [
     url: '/api/auth/login/mobile',
     method: 'post',
     response: (res: any) => {
-      if (res.body.mobile !== 'admin') {
-        return {}
-      }
       return {
         code: 200,
         message: 'success',

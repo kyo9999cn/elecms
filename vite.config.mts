@@ -62,6 +62,23 @@ export default defineConfig(({ mode }) => {
           silenceDeprecations: ['legacy-js-api']
         }
       }
+    },
+    build: {
+      // 加大限制的大小将500kb改成1500kb或者更大
+      chunkSizeWarningLimit: 1500,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id
+                .toString()
+                .split('node_modules/')[1]
+                .split('/')[0]
+                .toString()
+            }
+          }
+        }
+      }
     }
   }
 })

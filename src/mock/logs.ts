@@ -7,7 +7,9 @@ export default [
         code: 200,
         message: 'success',
         data: {
-          name: 'roles',
+          name: 'logs',
+          label: 'form.logs.model',
+          title: '系统日志',
           columns: [
             {
               key: 'type',
