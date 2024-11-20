@@ -250,10 +250,11 @@ const onSearch = (formData: any) => {
 const onAdd = () => {
   action.value = 'add'
   formData.value = {}
-  formTitle.value =
-    getLang(props.addBtn, '新建', appStore.lang) +
-    (appStore.lang !== 'zhCn' ? ' ' : '') +
-    getLang(modelLabel.value, modelName.value, appStore.lang)
+  formTitle.value = `${getLang(props.addBtn, '新建', appStore.lang)} ${getLang(
+    modelLabel.value,
+    modelName.value,
+    appStore.lang
+  )}`
   if (props.formType === 'dialog') {
     dialogVisible.value = true
   }
@@ -265,10 +266,11 @@ const onAdd = () => {
 // 修改
 const onEdit = (row: any) => {
   action.value = 'edit'
-  formTitle.value =
-    getLang(props.editBtn, '修改', appStore.lang) +
-    (appStore.lang !== 'zhCn' ? ' ' : '') +
-    getLang(modelLabel.value, modelName.value, appStore.lang)
+  formTitle.value = `${getLang(props.editBtn, '修改', appStore.lang)} ${getLang(
+    modelLabel.value,
+    modelName.value,
+    appStore.lang
+  )}`
 
   // 通过列表数据获取表单值，使用深拷贝阻止响应式
   formData.value = JSON.parse(JSON.stringify(row))

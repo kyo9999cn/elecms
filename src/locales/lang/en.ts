@@ -132,6 +132,7 @@ export default {
       label: 'Language Tag',
       icon: 'Icon',
       parent: 'Parent Menu',
+      jump: 'Jump Link',
       path: 'Access Path',
       memo: 'Memo',
       status: 'Status'
