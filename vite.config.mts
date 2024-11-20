@@ -25,7 +25,8 @@ export default defineConfig(({ mode }) => {
       // mock 配置项
       viteMockServe({
         mockPath: './src/mock',
-        enable: mode === 'development',
+        // enable: mode === 'development',
+        enable: true,
         watchFiles: true
       })
     ],

@@ -1,11 +1,17 @@
 {
   "name": "elecms-pro",
+  "description": "Rapid Development Framework for Enterprise Applications",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "小白fate",
+    "email": "251392298@qq.com",
+    "url": "https://pro.elecms.com"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -45,6 +51,7 @@
     "eslint-plugin-vue": "^9.29.1",
     "mockjs": "^1.1.0",
     "prettier": "^3.3.3",
+    "rollup": "^4.27.3",
     "typescript": "^5.5.3",
     "vite": "^5.4.8",
     "vite-plugin-eslint": "^1.8.1",
